@@ -20,16 +20,16 @@ uart_t uart3 = {
 };
 
 /**
- * @brief  UART ³õÊ¼»¯º¯Êý
- * @param  UARTx: Ö¸ÏòÒªÅäÖÃµÄ UART ÍâÉèµÄÖ¸Õë
- * @param  Baudrate: ²¨ÌØÂÊ
- * @param  GPIOx: Ö¸ÏòÒªÅäÖÃµÄ GPIO ÍâÉèµÄÖ¸Õë
- * @param  TxPin: TX Òý½Å
- * @param  RxPin: RX Òý½Å
- * @param  TxPinSource: TX Òý½Å¸´ÓÃÔ´
- * @param  RxPinSource: RX Òý½Å¸´ÓÃÔ´
- * @param  GPIO_AF: GPIO ¸´ÓÃ¹¦ÄÜ -- ²éÊý¾ÝÊÖ²á
- * @param  IRQn: ÖÐ¶ÏÏòÁ¿ºÅ
+ * @brief  UART åˆå§‹åŒ–å‡½æ•°
+ * @param  UARTx: æŒ‡å‘è¦é…ç½®çš„ UART å¤–è®¾çš„æŒ‡é’ˆ
+ * @param  Baudrate: æ³¢ç‰¹çŽ‡
+ * @param  GPIOx: æŒ‡å‘è¦é…ç½®çš„ GPIO å¤–è®¾çš„æŒ‡é’ˆ
+ * @param  TxPin: TX å¼•è„š
+ * @param  RxPin: RX å¼•è„š
+ * @param  TxPinSource: TX å¼•è„šå¤ç”¨æº
+ * @param  RxPinSource: RX å¼•è„šå¤ç”¨æº
+ * @param  GPIO_AF: GPIO å¤ç”¨åŠŸèƒ½ -- æŸ¥æ•°æ®æ‰‹å†Œ
+ * @param  IRQn: ä¸­æ–­å‘é‡å·
  * @retval None
  */
 void uart_config(UART_TypeDef *UARTx,
@@ -47,7 +47,7 @@ void uart_config(UART_TypeDef *UARTx,
     NVIC_InitTypeDef NVIC_InitStruct;
     UART_InitTypeDef UART_InitStruct;
 
-    // 1. ÆôÓÃ UART ºÍ GPIO Ê±ÖÓ
+    // 1. å¯ç”¨ UART å’Œ GPIO æ—¶é’Ÿ
     if (UARTx == UART1)
         RCC_APB2PeriphClockCmd(RCC_APB2ENR_UART1, ENABLE);
     else if (UARTx == UART2)
@@ -62,7 +62,7 @@ void uart_config(UART_TypeDef *UARTx,
     else if (GPIOx == GPIOC)
         RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOC, ENABLE);
 
-    // 2. ÅäÖÃ UART ²ÎÊý
+    // 2. é…ç½® UART å‚æ•°
     UART_StructInit(&UART_InitStruct);
     UART_InitStruct.BaudRate = Baudrate;
     UART_InitStruct.WordLength = UART_WordLength_8b;
@@ -72,35 +72,35 @@ void uart_config(UART_TypeDef *UARTx,
     UART_InitStruct.Mode = UART_Mode_Rx | UART_Mode_Tx;
     UART_Init(UARTx, &UART_InitStruct);
 
-    // 3. ÅäÖÃ GPIO ¸´ÓÃ¹¦ÄÜ
+    // 3. é…ç½® GPIO å¤ç”¨åŠŸèƒ½
     GPIO_PinAFConfig(GPIOx, TxPinSource, GPIO_AF);
     GPIO_PinAFConfig(GPIOx, RxPinSource, GPIO_AF);
 
-    // ÅäÖÃ TX Òý½Å£º¸´ÓÃÍÆÍìÊä³ö
+    // é…ç½® TX å¼•è„šï¼šå¤ç”¨æŽ¨æŒ½è¾“å‡º
     GPIO_StructInit(&GPIO_InitStruct);
     GPIO_InitStruct.GPIO_Pin = TxPin;
     GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
     GPIO_Init(GPIOx, &GPIO_InitStruct);
 
-    // ÅäÖÃ RX Òý½Å£ºÊäÈëÉÏÀ­
+    // é…ç½® RX å¼•è„šï¼šè¾“å…¥ä¸Šæ‹‰
     GPIO_StructInit(&GPIO_InitStruct);
     GPIO_InitStruct.GPIO_Pin = RxPin;
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
     GPIO_Init(GPIOx, &GPIO_InitStruct);
-    // ÅäÖÃ UART ÖÐ¶Ï/¿ÕÏÐÖÐ¶Ï
+    // é…ç½® UART ä¸­æ–­/ç©ºé—²ä¸­æ–­
     if (it_mode != IT_NULL)
     {
         UART_ITConfig(UARTx, UART_IT_RXIEN, ENABLE);
         if (it_mode == UART_IDLE)
             UARTx->IER |= UART_IER_RXIDLE;
-        // 4. ÅäÖÃÖÐ¶Ï
+        // 4. é…ç½®ä¸­æ–­
         NVIC_InitStruct.NVIC_IRQChannel = IRQn;
         NVIC_InitStruct.NVIC_IRQChannelPriority = 0x01;
         NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
         NVIC_Init(&NVIC_InitStruct);
     }
-    // 5. ÆôÓÃ UART
+    // 5. å¯ç”¨ UART
     UART_Cmd(UARTx, ENABLE);
 }
 
@@ -119,7 +119,7 @@ void UART1_IRQHandler(void)
 #if defined(USE_UART1)
     uart_t *huart = &uart1;
 
-    // ½ÓÊÕÖÐ¶Ï
+    // æŽ¥æ”¶ä¸­æ–­
     if (UART_GetITStatus(huart->uart, UART_IT_RXIEN) != RESET)
     {
         if (huart->callback)
@@ -129,7 +129,7 @@ void UART1_IRQHandler(void)
         UART_ClearITPendingBit(huart->uart, UART_IT_RXIEN);
     }
 
-    // ¿ÕÏÐÖÐ¶Ï£ºÒ»Ö¡½ÓÊÕÍê³É
+    // ç©ºé—²ä¸­æ–­ï¼šä¸€å¸§æŽ¥æ”¶å®Œæˆ
     if (huart->uart->ISR & UART_ISR_RXIDLE)
     {
         huart->uart->ICR = UART_ICR_RXIDLE;
@@ -139,16 +139,16 @@ void UART1_IRQHandler(void)
 }
 
 /**
- * @brief  UART2 ÖÐ¶Ï´¦Àíº¯Êý
- * @note   ÎÒ°Ñit.c µÄÖÐ¶Ïº¯Êý ÉèÎªÁËÈõº¯Êý
- * @note   ÓÃÆÕÍ¨ÖÐ¶ÏÖð¸ö»º´æÊý¾Ý£¬ÓÃ¿ÕÏÐÖÐ¶ÏÅÐ¶Ï¡°½ÓÊÕÍê³É¡±²¢´¥·¢´¦Àí
+ * @brief  UART2 ä¸­æ–­å¤„ç†å‡½æ•°
+ * @note   æˆ‘æŠŠit.c çš„ä¸­æ–­å‡½æ•° è®¾ä¸ºäº†å¼±å‡½æ•°
+ * @note   ç”¨æ™®é€šä¸­æ–­é€ä¸ªç¼“å­˜æ•°æ®ï¼Œç”¨ç©ºé—²ä¸­æ–­åˆ¤æ–­â€œæŽ¥æ”¶å®Œæˆâ€å¹¶è§¦å‘å¤„ç†
  */
 void UART2_IRQHandler(void)
 {
 #if defined(USE_UART2)
     uart_t *huart = &uart2;
 
-    // ½ÓÊÕÖÐ¶Ï
+    // æŽ¥æ”¶ä¸­æ–­
     if (UART_GetITStatus(huart->uart, UART_IT_RXIEN) != RESET)
     {
         if (huart->rx_len < UART_RX_BUF_SIZE)
@@ -162,7 +162,7 @@ void UART2_IRQHandler(void)
         UART_ClearITPendingBit(huart->uart, UART_IT_RXIEN);
     }
 
-    // ¿ÕÏÐÖÐ¶Ï£ºÒ»Ö¡½ÓÊÕÍê³É
+    // ç©ºé—²ä¸­æ–­ï¼šä¸€å¸§æŽ¥æ”¶å®Œæˆ
     if (huart->uart->ISR & UART_ISR_RXIDLE)
     {
         huart->uart->ICR = UART_ICR_RXIDLE;
@@ -176,7 +176,7 @@ void UART3_IRQHandler(void)
 #if defined(USE_UART3)
     uart_t *huart = &uart3;
 
-    // ½ÓÊÕÖÐ¶Ï
+    // æŽ¥æ”¶ä¸­æ–­
     if (UART_GetITStatus(huart->uart, UART_IT_RXIEN) != RESET)
     {
         if (huart->rx_len < UART_RX_BUF_SIZE)
@@ -190,13 +190,13 @@ void UART3_IRQHandler(void)
         UART_ClearITPendingBit(huart->uart, UART_IT_RXIEN);
     }
 
-    // ¿ÕÏÐÖÐ¶Ï£ºÒ»Ö¡½ÓÊÕÍê³É
+    // ç©ºé—²ä¸­æ–­ï¼šä¸€å¸§æŽ¥æ”¶å®Œæˆ
     if (huart->uart->ISR & UART_ISR_RXIDLE)
     {
         huart->uart->ICR = UART_ICR_RXIDLE;
         if (huart->idle_callback)
         {
-            huart->idle_callback(huart->rx_buf, huart->rx_len); // µ÷ÓÃ¿ÕÏÐ»Øµ÷º¯Êý
+            huart->idle_callback(huart->rx_buf, huart->rx_len); // è°ƒç”¨ç©ºé—²å›žè°ƒå‡½æ•°
         }
         huart->rx_len = 0;
         huart->rx_ok = 1;

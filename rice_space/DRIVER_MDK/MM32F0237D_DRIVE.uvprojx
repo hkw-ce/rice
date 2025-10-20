@@ -438,6 +438,18 @@
         </Group>
         <Group>
           <GroupName>dev</GroupName>
+          <Files>
+            <File>
+              <FileName>gn1650.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\gn1650.c</FilePath>
+            </File>
+            <File>
+              <FileName>SC7A20.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\SC7A20.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>HAL_LIB</GroupName>

@@ -37,18 +37,20 @@ extern "C"
 #define SHELL_UART_PORT USE_UART2
 
 #define UART_RX_BUF_SIZE 30
-  typedef void (*uart_rx_callback_t)(uint8_t ch);                       // 接收字节回调函数类型
-  typedef void (*uart_idle_rx_callback_t)(uint8_t *pBuf, uint16_t len); // 空闲接收回调函数类型
+  typedef void (*uart_rx_callback_t)(uint8_t ch);                       // 鎺ユ敹瀛楄妭鍥炶皟鍑芥暟绫诲瀷
+  typedef void (*uart_idle_rx_callback_t)(uint8_t *pBuf, uint16_t len); // 绌洪棽鎺ユ敹鍥炶皟鍑芥暟绫诲瀷
   typedef struct
   {
     UART_TypeDef *uart;
 
-    uint8_t rx_buf[UART_RX_BUF_SIZE]; // 接收缓冲??
-    volatile uint16_t rx_len;         // 当前接收长度
-    volatile uint8_t rx_ok;           // 接收完成标志（IDLE触发后置1??
+    uint8_t rx_buf[UART_RX_BUF_SIZE]; // 鎺ユ敹缂撳啿??
+    volatile uint16_t rx_len;         // 褰撳墠鎺ユ敹闀垮害
+    volatile uint8_t rx_ok;           // 鎺ユ敹瀹屾垚鏍囧織锛圛DLE瑙﹀彂鍚庣疆1??
     uart_rx_callback_t callback;
     uart_idle_rx_callback_t idle_callback;
   } uart_t;
+
+
 #ifdef USE_UART1
   extern uart_t uart1;
 #endif
@@ -66,30 +68,30 @@ extern "C"
 #endif
   typedef struct
   {
-    GPIO_TypeDef *port; // GPIO 端口，例?? GPIOA
-    uint16_t pin;       // GPIO 引脚，例?? GPIO_Pin_1
+    GPIO_TypeDef *port; // GPIO 绔彛锛屼緥?? GPIOA
+    uint16_t pin;       // GPIO 寮曡剼锛屼緥?? GPIO_Pin_1
 
-    uint32_t freq_hz; // 模拟PWM频率
-    uint8_t duty;     // 占空比百分比 0~100
+    uint32_t freq_hz; // 妯℃嫙PWM棰戠巼
+    uint8_t duty;     // 鍗犵┖姣旂櫨鍒嗘瘮 0~100
 
-    uint32_t period_ticks; // 一个PWM周期包含多少个tick
-    uint32_t on_ticks;     // 高电平持续多少tick
-    uint32_t tick_counter; // 当前tick计数
+    uint32_t period_ticks; // 涓�涓狿WM鍛ㄦ湡鍖呭惈澶氬皯涓猼ick
+    uint32_t on_ticks;     // 楂樼數骞虫寔缁灏憈ick
+    uint32_t tick_counter; // 褰撳墠tick璁℃暟
   } soft_pwm_t;
 
-/********************* MCU 相关配置信息 ***************************************/
+/********************* MCU 鐩稿叧閰嶇疆淇℃伅 ***************************************/
 #define MM32_ROM_START ((uint32_t)0x08000000)
 #define MM32_ROM_SIZE (64 * 1024)
 #define MM32_ROM_END ((uint32_t)(STM32_ROM_START + STM32_ROM_SIZE))
 
-/********************* 版本说明(尽量使用字符串类型的版本) **********************/
+/********************* 鐗堟湰璇存槑(灏介噺浣跨敤瀛楃涓茬被鍨嬬殑鐗堟湰) **********************/
 #define HARDWARE_VERSION 1
 #define SOFTWARE_VERSION 1
 #define HARDWARE_VERSION_STR "V1 2025/5/21"
 #define SOFTWARE_VERSION_STR "V1 2025/03/22"
 
-/********************* 更新日志 **********************************************/
-#define UPDATE_LOG "更新日志 2025/05/16 新建工程框架\n "
+/********************* 鏇存柊鏃ュ織 **********************************************/
+#define UPDATE_LOG "鏇存柊鏃ュ織 2025/05/16 鏂板缓宸ョ▼妗嗘灦\n "
 #undef EXTERN
 
 #ifdef _PLATFORM_C_
@@ -148,7 +150,9 @@ extern "C"
   void i2c_config(I2C_TypeDef *i2c, uint8_t dev_addr, GPIO_TypeDef *GPIOx, uint16_t sck_pin, uint16_t sda_pin);
   void i2c_tx_polling(I2C_TypeDef *i2c, uint8_t *Buffer, uint8_t Length);
   void i2c_rx_polling(I2C_TypeDef *i2c, uint8_t *Buffer, uint16_t Length);
-
+ void i2c_write_reg(i2c_bus_t *bus, uint8_t dev, uint8_t reg, uint8_t val);  
+ uint8_t i2c_read_reg(i2c_bus_t *bus, uint8_t dev, uint8_t reg);
+  void default_delay_us(uint32_t us);
   //
   void amoled_qspi_config(void);
   void amoled_send_color(uint8_t cmd, const uint8_t *color_data, uint32_t length);

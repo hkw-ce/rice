@@ -4,13 +4,13 @@
 #include "mm32_soft_i2c_v1.h"
 #include "rtthread.h" 
 #ifdef USER_I2C_V1
-/* Èç¹û bus->delay_us Îª NULL£¬ÔòÊ¹ÓÃÕâ¸öÄ¬ÈÏÊµÏÖ */
-static void default_delay_us(uint32_t us)
+/* å¦‚æœ bus->delay_us ä¸º NULLï¼Œåˆ™ä½¿ç”¨è¿™ä¸ªé»˜è®¤å®ç° */
+ void default_delay_us(uint32_t us)
 {
     rt_hw_us_delay(us);
 }
 
-/* ---- ¼òµ¥ GPIO °ü×°º¯Êı ---- */
+/* ---- ç®€å• GPIO åŒ…è£…å‡½æ•° ---- */
 static inline void gpio_set_high(GPIO_TypeDef *port, uint16_t pin)
 {
     GPIO_SetBits(port, pin);
@@ -24,7 +24,7 @@ static inline uint8_t gpio_get(GPIO_TypeDef *port, uint16_t pin)
     return (uint8_t)GPIO_ReadInputDataBit(port, pin);
 }
 
-/* ==== I2C »ù±¾ĞÅºÅ£¨ÃæÏò i2c_bus_t ÊµÀı£© ==== */
+/* ==== I2C åŸºæœ¬ä¿¡å·ï¼ˆé¢å‘ i2c_bus_t å®ä¾‹ï¼‰ ==== */
 static void i2c_scl(i2c_bus_t *bus, uint8_t level)
 {
     if (level)
@@ -46,7 +46,7 @@ static uint8_t i2c_read_sda(i2c_bus_t *bus)
     return gpio_get(bus->sda_port, bus->sda_pin);
 }
 
-/* ==== Ê±Ğò¸¨Öú£ºµ÷ÓÃ bus µÄ delay »òÄ¬ÈÏ delay ==== */
+/* ==== æ—¶åºè¾…åŠ©ï¼šè°ƒç”¨ bus çš„ delay æˆ–é»˜è®¤ delay ==== */
 static inline void i2c_delay_us(i2c_bus_t *bus, uint32_t us)
 {
     if (bus && bus->delay_us)
@@ -56,54 +56,54 @@ static inline void i2c_delay_us(i2c_bus_t *bus, uint32_t us)
 }
 
 /*
-    i2c_clock_cycle£º
-    - bus: Ö¸¶¨×ÜÏß
-    - data: µ± output_mode Ê±¸ÃÎ»µÄµçÆ½£¨0/1£©
-    - input_mode: 1 ±íÊ¾ SDA ÊÍ·ÅÎªÊäÈë£¨´Ó»úÇı¶¯ SDA£©£¬0 ±íÊ¾Êä³ö data
-    - is_ack_phase: ACK½×¶Î¿É×ö¸ü³¤ÑÓÊ±£¨ÈÃ´Ó»úÓĞÊ±¼äÀ­µÍ£©
-    ·µ»Ø£ºÔÚ input_mode Ê±¶ÁÈ¡µ½µÄ SDA Öµ£¬·ñÔò·µ»Ø 0
+    i2c_clock_cycleï¼š
+    - bus: æŒ‡å®šæ€»çº¿
+    - data: å½“ output_mode æ—¶è¯¥ä½çš„ç”µå¹³ï¼ˆ0/1ï¼‰
+    - input_mode: 1 è¡¨ç¤º SDA é‡Šæ”¾ä¸ºè¾“å…¥ï¼ˆä»æœºé©±åŠ¨ SDAï¼‰ï¼Œ0 è¡¨ç¤ºè¾“å‡º data
+    - is_ack_phase: ACKé˜¶æ®µå¯åšæ›´é•¿å»¶æ—¶ï¼ˆè®©ä»æœºæœ‰æ—¶é—´æ‹‰ä½ï¼‰
+    è¿”å›ï¼šåœ¨ input_mode æ—¶è¯»å–åˆ°çš„ SDA å€¼ï¼Œå¦åˆ™è¿”å› 0
 */
 static uint8_t i2c_clock_cycle(i2c_bus_t *bus, uint8_t data, int input_mode, int is_ack_phase)
 {
     uint8_t bit = 0;
 
-    /* SDA Êä³ö»òÊÍ·Å */
+    /* SDA è¾“å‡ºæˆ–é‡Šæ”¾ */
     if (!input_mode)
     {
-        /* Êä³öÄ£Ê½£º°Ñ SDA ÉèÖÃÎª data µçÆ½£¨Ö÷»úÇı¶¯£© */
+        /* è¾“å‡ºæ¨¡å¼ï¼šæŠŠ SDA è®¾ç½®ä¸º data ç”µå¹³ï¼ˆä¸»æœºé©±åŠ¨ï¼‰ */
         i2c_sda(bus, data ? 1 : 0);
     }
     else
     {
-        /* ÊÍ·Å SDA£¨¸ß×è£©¡ª¡ªÍ¨¹ıÀ­¸ßÀ´ÊµÏÖ */
+        /* é‡Šæ”¾ SDAï¼ˆé«˜é˜»ï¼‰â€”â€”é€šè¿‡æ‹‰é«˜æ¥å®ç° */
         i2c_sda(bus, 1);
     }
 
-    /* SCL µÍµçÆ½½×¶Î±£³ÖÒ»Ğ¡¶ÎÊ±¼ä */
+    /* SCL ä½ç”µå¹³é˜¶æ®µä¿æŒä¸€å°æ®µæ—¶é—´ */
     i2c_delay_us(bus, 5);
 
-    /* SCL ÉÏÉıµ½¸ßµçÆ½£¬ÆÚ¼ä´Ó»ú/Ö÷»úÓ¦ÎÈ¶¨ SDA */
+    /* SCL ä¸Šå‡åˆ°é«˜ç”µå¹³ï¼ŒæœŸé—´ä»æœº/ä¸»æœºåº”ç¨³å®š SDA */
     i2c_scl(bus, 1);
 
     if (is_ack_phase)
-        i2c_delay_us(bus, 30); /* ACK½×¶ÎÑÓÊ±¸ü¾Ã£¬Èİ´íĞÔºÃ */
+        i2c_delay_us(bus, 30); /* ACKé˜¶æ®µå»¶æ—¶æ›´ä¹…ï¼Œå®¹é”™æ€§å¥½ */
     else
         i2c_delay_us(bus, 5);
 
-    /* ²ÉÑù SDA£¨Èç¹ûÊÇÊäÈëÄ£Ê½£© */
+    /* é‡‡æ · SDAï¼ˆå¦‚æœæ˜¯è¾“å…¥æ¨¡å¼ï¼‰ */
     if (input_mode)
         bit = i2c_read_sda(bus);
 
-    /* SCL À­»ØµÍµçÆ½£¬Íê³ÉÒ»¸öÊ±ÖÓ */
+    /* SCL æ‹‰å›ä½ç”µå¹³ï¼Œå®Œæˆä¸€ä¸ªæ—¶é’Ÿ */
     i2c_scl(bus, 0);
     i2c_delay_us(bus, 5);
 
     return bit;
 }
 
-/* ==== ×Ö½Ú¼¶º¯Êı£¨»ùÓÚ i2c_clock_cycle£© ==== */
+/* ==== å­—èŠ‚çº§å‡½æ•°ï¼ˆåŸºäº i2c_clock_cycleï¼‰ ==== */
 
-/* ·¢ËÍ 1 ×Ö½Ú²¢¶ÁÈ¡ ACK£¨0 ±íÊ¾ ACK£©¡ª¡ªÓÃÓÚ scan */
+/* å‘é€ 1 å­—èŠ‚å¹¶è¯»å– ACKï¼ˆ0 è¡¨ç¤º ACKï¼‰â€”â€”ç”¨äº scan */
 static uint8_t i2c_write_byte_ack(i2c_bus_t *bus, uint8_t d)
 {
     for (int i = 0; i < 8; i++)
@@ -112,18 +112,18 @@ static uint8_t i2c_write_byte_ack(i2c_bus_t *bus, uint8_t d)
         d <<= 1;
     }
 
-    /* µÚ9 Î»£ºÊÍ·Å SDA£¬¶Á´Ó»ú ACK */
+    /* ç¬¬9 ä½ï¼šé‡Šæ”¾ SDAï¼Œè¯»ä»æœº ACK */
     return i2c_clock_cycle(bus, 1, 1, 1);
  /* 0=ACK, 1=NACK */
 }
 
-/* ·¢ËÍ 1 ×Ö½Ú²¢·µ»Ø ACK£¨¼æÈİÔ­ÏÈ i2c_write_byte µÄÓïÒå£© */
+/* å‘é€ 1 å­—èŠ‚å¹¶è¿”å› ACKï¼ˆå…¼å®¹åŸå…ˆ i2c_write_byte çš„è¯­ä¹‰ï¼‰ */
 static uint8_t i2c_write_byte(i2c_bus_t *bus, uint8_t data)
 {
     return i2c_write_byte_ack(bus, data);
 }
 
-/* ¶ÁÈ¡ 1 ×Ö½Ú²¢ÔÚµÚ9Î»·¢ËÍ MCU ACK/NACK£¨ack=1 ±íÊ¾ MCU ·¢ ACK£¬ack=0 ±íÊ¾ MCU ·¢ NACK£© */
+/* è¯»å– 1 å­—èŠ‚å¹¶åœ¨ç¬¬9ä½å‘é€ MCU ACK/NACKï¼ˆack=1 è¡¨ç¤º MCU å‘ ACKï¼Œack=0 è¡¨ç¤º MCU å‘ NACKï¼‰ */
 static uint8_t i2c_read_byte(i2c_bus_t *bus, int ack)
 {
     uint8_t data = 0;
@@ -132,12 +132,12 @@ static uint8_t i2c_read_byte(i2c_bus_t *bus, int ack)
         data <<= 1;
         data |= i2c_clock_cycle(bus, 1, 1, 0);
     }
-    /* µÚ9Î»£ºÖ÷»ú·¢ËÍ ACK/NACK£¨0->À­µÍ±íÊ¾ ACK, 1->±£³Ö¸ß±íÊ¾ NACK£© */
+    /* ç¬¬9ä½ï¼šä¸»æœºå‘é€ ACK/NACKï¼ˆ0->æ‹‰ä½è¡¨ç¤º ACK, 1->ä¿æŒé«˜è¡¨ç¤º NACKï¼‰ */
     i2c_clock_cycle(bus, (ack ? 0 : 1), 0, 1);
     return data;
 }
 
-/* ==== ¸ß²ã²Ù×÷£ºstart/stop/read/write ¶à×Ö½Ú µÈ ==== */
+/* ==== é«˜å±‚æ“ä½œï¼šstart/stop/read/write å¤šå­—èŠ‚ ç­‰ ==== */
 
 static void i2c_start(i2c_bus_t *bus)
 {
@@ -159,7 +159,7 @@ static void i2c_stop(i2c_bus_t *bus)
     i2c_delay_us(bus, 5);
 }
 
-/* ÏòÉè±¸¼Ä´æÆ÷Ğ´Ò»¸ö×Ö½Ú£¨²»¼ì²é·µ»ØÖµ£© */
+/* å‘è®¾å¤‡å¯„å­˜å™¨å†™ä¸€ä¸ªå­—èŠ‚ï¼ˆä¸æ£€æŸ¥è¿”å›å€¼ï¼‰ */
 void i2c_write_reg(i2c_bus_t *bus, uint8_t dev, uint8_t reg, uint8_t val)
 {
     i2c_start(bus);
@@ -169,7 +169,7 @@ void i2c_write_reg(i2c_bus_t *bus, uint8_t dev, uint8_t reg, uint8_t val)
     i2c_stop(bus);
 }
 
-/* ¶ÁÉè±¸¼Ä´æÆ÷Ò»¸ö×Ö½Ú */
+/* è¯»è®¾å¤‡å¯„å­˜å™¨ä¸€ä¸ªå­—èŠ‚ */
 uint8_t i2c_read_reg(i2c_bus_t *bus, uint8_t dev, uint8_t reg)
 {
     uint8_t val = 0;
@@ -204,19 +204,19 @@ void i2c_read_bytes(i2c_bus_t *bus, uint8_t dev, uint8_t reg, uint8_t *buf, uint
     i2c_write_byte(bus, (dev << 1) | 1);
     while (len--)
     {
-        *buf++ = i2c_read_byte(bus, len ? 1 : 0); /* ¶ÔÓÚ×îºóÒ»¸ö×Ö½Ú NACK */
+        *buf++ = i2c_read_byte(bus, len ? 1 : 0); /* å¯¹äºæœ€åä¸€ä¸ªå­—èŠ‚ NACK */
     }
     i2c_stop(bus);
 }
 
-/* ==== É¨Ãèº¯Êı ==== */
+/* ==== æ‰«æå‡½æ•° ==== */
 void i2c_scan(i2c_bus_t *bus)
 {
 //    rt_kprintf("\r\nScanning I2C bus: SDA=%p.%04X  SCL=%p.%04X\r\n",
 //               (void *)bus->sda_port, (unsigned)bus->sda_pin,
 //               (void *)bus->scl_port, (unsigned)bus->scl_pin);
 
-//    rt_enter_critical(); /* ½ûÓÃÖĞ¶Ï */
+//    rt_enter_critical(); /* ç¦ç”¨ä¸­æ–­ */
     for (uint8_t addr = 0; addr < 128; addr++)
     {
         i2c_start(bus);
@@ -229,10 +229,10 @@ void i2c_scan(i2c_bus_t *bus)
 				i2c_stop(bus);
         i2c_delay_us(bus, 50);
     }
-//    rt_exit_critical(); /* »Ö¸´ÖĞ¶Ï */
+//    rt_exit_critical(); /* æ¢å¤ä¸­æ–­ */
 }
 
-/* ==== ×ÜÏß³õÊ¼»¯£¨ÅäÖÃ GPIO£© ==== */
+/* ==== æ€»çº¿åˆå§‹åŒ–ï¼ˆé…ç½® GPIOï¼‰ ==== */
 void i2c_bus_init(i2c_bus_t *bus)
 {
     if (!bus) {
@@ -249,10 +249,12 @@ void i2c_bus_init(i2c_bus_t *bus)
     gpio_config(bus->sda_port, bus->sda_pin, GPIO_Mode_Out_OD, GPIO_Speed_50MHz);
     gpio_config(bus->scl_port, bus->scl_pin, GPIO_Mode_Out_OD, GPIO_Speed_50MHz);
 
+//    gpio_config(bus->sda_port, bus->sda_pin, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
+//    gpio_config(bus->scl_port, bus->scl_pin, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
     i2c_sda(bus, 1);
     i2c_scl(bus, 1);
 
-    /* ÑéÖ¤×ÜÏß×´Ì¬ */
+    /* éªŒè¯æ€»çº¿çŠ¶æ€ */
     if (i2c_read_sda(bus) != 1 ) {
         rt_kprintf("I2C bus init failed: SDA not high\n");
     }
@@ -260,16 +262,16 @@ void i2c_bus_init(i2c_bus_t *bus)
         rt_kprintf("I2C bus init failed: SCL not high\n");
     }
 }
-/* ==== Ê¾ÀıÁ½Â· I2C ¶¨Òå£¨Äã¿ÉÒÔ·ÅÔÚ±ğµÄÎÄ¼şÒıÓÃ£© ==== */
+/* ==== ç¤ºä¾‹ä¸¤è·¯ I2C å®šä¹‰ï¼ˆä½ å¯ä»¥æ”¾åœ¨åˆ«çš„æ–‡ä»¶å¼•ç”¨ï¼‰ ==== */
+
 
 i2c_bus_t i2c1 = {
-    .scl_port = GPIOB,
-    .scl_pin  = GPIO_Pin_10,
-    .sda_port = GPIOB,
-    .sda_pin  = GPIO_Pin_11,
-    .delay_us = default_delay_us,
+.scl_port = GPIOB,
+.scl_pin  = GPIO_Pin_10,
+.sda_port = GPIOB,
+.sda_pin  = GPIO_Pin_11,
+.delay_us = default_delay_us,
 };
-
 
 int i2c_auto_scan_init(void)
 {

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "platform.h": "c",
+        "mm32_soft_i2c_v1.h": "c"
+    }
+}

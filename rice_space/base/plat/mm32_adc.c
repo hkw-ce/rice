@@ -2,7 +2,7 @@
 #include "platform.h"
 
 /**
- * @brief ¸ù¾İ ADC Í¨µÀºÅ·µ»Ø¶ÔÓ¦ GPIO ¶Ë¿ÚºÍÒı½Å
+ * @brief æ ¹æ® ADC é€šé“å·è¿”å›å¯¹åº” GPIO ç«¯å£å’Œå¼•è„š
  */
 int adc_channel_to_gpio(uint8_t adc_channel, GPIO_TypeDef **gpio_port, uint16_t *gpio_pin)
 {
@@ -66,7 +66,7 @@ int adc_channel_to_gpio(uint8_t adc_channel, GPIO_TypeDef **gpio_port, uint16_t 
 }
 
 /**
- * @brief Ê¹ÄÜ¶ÔÓ¦GPIO¶Ë¿ÚÊ±ÖÓ
+ * @brief ä½¿èƒ½å¯¹åº”GPIOç«¯å£æ—¶é’Ÿ
  */
 void enable_gpio_clock(GPIO_TypeDef *gpio_port)
 {
@@ -78,19 +78,19 @@ void enable_gpio_clock(GPIO_TypeDef *gpio_port)
         RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOC, ENABLE);
     else if (gpio_port == GPIOD)
         RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOD, ENABLE);
-    // ĞèÒª¿É¼ÌĞøÀ©Õ¹
+    // éœ€è¦å¯ç»§ç»­æ‰©å±•
 }
 
 /**
- * @brief ADCµ¥Í¨µÀ³õÊ¼»¯º¯Êı
- * @param hadc ADC¾ä±úÖ¸Õë
- * @param channel ADCÍ¨µÀºÅ
- * @note ADC µÄÊäÈëÊ±ÖÓ²»µÃ³¬¹ı 16M, ÊÇÓÉ APB2 Ê±ÖÓ(PCLK2)·ÖÆµ²úÉú¡£
+ * @brief ADCå•é€šé“åˆå§‹åŒ–å‡½æ•°
+ * @param hadc ADCå¥æŸ„æŒ‡é’ˆ
+ * @param channel ADCé€šé“å·
+ * @note ADC çš„è¾“å…¥æ—¶é’Ÿä¸å¾—è¶…è¿‡ 16M, æ˜¯ç”± APB2 æ—¶é’Ÿ(PCLK2)åˆ†é¢‘äº§ç”Ÿã€‚
  */
 void adc_config_single(ADC_TypeDef *hadc)
 {
     ADC_InitTypeDef ADC_InitStruct;
-    // Ê¹ÄÜADCÊ±ÖÓ -- ¼ÙÉèÊÇADC1
+    // ä½¿èƒ½ADCæ—¶é’Ÿ -- å‡è®¾æ˜¯ADC1
     RCC_APB2PeriphClockCmd(RCC_APB2ENR_ADC1, ENABLE);
 
     ADC_StructInit(&ADC_InitStruct);
@@ -106,21 +106,21 @@ void adc_config_single(ADC_TypeDef *hadc)
 }
 
 /**
- * @brief ¶ÁÈ¡µ¥Í¨µÀADCÖµ£¨ÂÖÑ¯·½Ê½£©
- * @param hadc ADC¾ä±úÖ¸Õë
- * @return ADC×ª»»½á¹û£¨12Î»£©
+ * @brief è¯»å–å•é€šé“ADCå€¼ï¼ˆè½®è¯¢æ–¹å¼ï¼‰
+ * @param hadc ADCå¥æŸ„æŒ‡é’ˆ
+ * @return ADCè½¬æ¢ç»“æœï¼ˆ12ä½ï¼‰
  */
 uint16_t adc_read_single(ADC_TypeDef *hadc, ADCCHANNEL_TypeDef channel)
 {
     GPIO_InitTypeDef GPIO_InitStruct;
-    // ÅäÖÃµ¥Í¨µÀ²ÉÑùÊ±¼ä
+    // é…ç½®å•é€šé“é‡‡æ ·æ—¶é—´
     ADC_RegularChannelConfig(hadc, channel, 0, ADC_Samctl_240_5);
-    // ÅäÖÃ²ÉÑùÍ¨µÀÊıÁ¿ ´Ó0¿ªÊ¼
+    // é…ç½®é‡‡æ ·é€šé“æ•°é‡ ä»0å¼€å§‹
     ADC_ANY_NUM_Config(hadc, 0);
     ADC_ANY_CH_Config(ADC1, 0, channel);
     ADC_ANY_Cmd(ADC1, ENABLE);
 
-    // ÅäÖÃ¶ÔÓ¦µÄGPIOÄ£ÄâÊäÈë
+    // é…ç½®å¯¹åº”çš„GPIOæ¨¡æ‹Ÿè¾“å…¥
     GPIO_TypeDef *port = NULL;
     uint16_t pin = 0;
     if (adc_channel_to_gpio(channel, &port, &pin) == 0)
@@ -134,14 +134,14 @@ uint16_t adc_read_single(ADC_TypeDef *hadc, ADCCHANNEL_TypeDef channel)
     }
     else
     {
-        // ´¦Àí´íÎó£ºÍ¨µÀ²»Ö§³Ö
+        // å¤„ç†é”™è¯¯ï¼šé€šé“ä¸æ”¯æŒ
     }
 
     ADC_SoftwareStartConvCmd(hadc, ENABLE);
 
     while (RESET == ADC_GetFlagStatus(hadc, ADC_FLAG_EOC))
     {
-        // µÈ´ı×ª»»Íê³É
+        // ç­‰å¾…è½¬æ¢å®Œæˆ
     }
 
     ADC_ClearFlag(hadc, ADC_FLAG_EOC);
