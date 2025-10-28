@@ -9,12 +9,12 @@
 
   <project>
     <PathAndName>.\APP_MDK\app.uvprojx</PathAndName>
+    <NodeIsActive>1</NodeIsActive>
     <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
     <PathAndName>.\DRIVER_MDK\MM32F0237D_DRIVE.uvprojx</PathAndName>
-    <NodeIsActive>1</NodeIsActive>
     <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 

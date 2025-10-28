@@ -338,9 +338,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define></Define>
+              <Define>USE_APP</Define>
               <Undefine></Undefine>
-              <IncludePath>..\base\lib\MM32F027x\Include;..\base\lib\MM32F027x\HAL_Lib\Inc;..\base\lib\CMSIS\KEIL_Core;..\base\plat;..\3rd\ulog;..\base\core;..\base\rtthread-nano-4.1.1\rt-thread\include;..\base\rtthread-nano-4.1.1\rt-thread\components\finsh;..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template;..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0</IncludePath>
+              <IncludePath>..\base\lib\MM32F027x\Include;..\base\lib\MM32F027x\HAL_Lib\Inc;..\base\lib\CMSIS\KEIL_Core;..\base\plat;..\3rd\ulog;..\base\core;..\base\rtthread-nano-4.1.1\rt-thread\include;..\base\rtthread-nano-4.1.1\rt-thread\components\finsh;..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template;..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0;..\3rd\MultiButton;..\base\dev\VL6180</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -434,6 +434,11 @@
               <FileType>1</FileType>
               <FilePath>..\base\plat\platform.c</FilePath>
             </File>
+            <File>
+              <FileName>PWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\PWM.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -448,6 +453,46 @@
               <FileName>SC7A20.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\base\dev\SC7A20.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\key.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl6180x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\VL6180\vl6180x.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>ina226.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\ina226.c</FilePath>
+            </File>
+            <File>
+              <FileName>hx711.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\hx711.c</FilePath>
+            </File>
+            <File>
+              <FileName>onewire_bus.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\onewire_bus.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>3rd</GroupName>
+          <Files>
+            <File>
+              <FileName>multi_button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\MultiButton\multi_button.c</FilePath>
             </File>
           </Files>
         </Group>

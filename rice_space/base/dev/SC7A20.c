@@ -8,13 +8,13 @@ SL_SC7A20_t sl_sc7Aa20;
 
 i2c_bus_t i2c2 = {
 .scl_port = GPIOA,
-.scl_pin  = GPIO_Pin_6,
+.scl_pin  = GPIO_Pin_10,
 .sda_port = GPIOA,
-.sda_pin  = GPIO_Pin_7,
+.sda_pin  = GPIO_Pin_9,
 .delay_us = default_delay_us,
 };
 
-#define PERIPH_SC7A20_ADD  0x19
+#define PERIPH_SC7A20_ADD  0x18
 int16_t x_acc, y_acc, z_acc;  // 用于存储三个轴的加速度数据
 
 signed char  SL_SC7A20_Online_Test(void)

@@ -33,8 +33,8 @@ extern "C"
 #define USE_UART5 5
 #define USE_UART6 6
 #define USE_UART7 7
-#define SHELL_UART UART2
-#define SHELL_UART_PORT USE_UART2
+#define SHELL_UART UART1
+#define SHELL_UART_PORT USE_UART1
 
 #define UART_RX_BUF_SIZE 30
   typedef void (*uart_rx_callback_t)(uint8_t ch);                       // 接收字节回调函数类型
@@ -163,7 +163,21 @@ extern "C"
   void rt_hw_us_delay(rt_uint32_t us);
   void amoled_init(void);
   void amoled_clear(uint16_t color);
+  
+  //v1680
+  void thread_vl6180_task_entry(void *parameter);
+  //adc
+  void thread_adc_task_entry(void *parameter);
 //  uint8_t i2c_scan(I2C_TypeDef *i2c, uint8_t *found, uint8_t max_found);
+
+//pwm
+#define PSFB_TIM               TIM2
+#define PSFB_PWM1              GPIO_Pin_0
+#define PSFB_PWM1_PIN_SOURCE   GPIO_PinSource0
+#define PSFB_PWM2              GPIO_Pin_1
+#define PSFB_PWM2_PIN_SOURCE   GPIO_PinSource1
+#define PSFB_GPIO              GPIOA
+#define PSFB_GPIO_AF           GPIO_AF_2
 #define F(str) (str)
 
 #ifdef __cplusplus

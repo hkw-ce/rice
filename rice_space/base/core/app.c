@@ -24,12 +24,15 @@ void app(void)
     // Q_CREATE_THREAD(flash, 1024 * 1 + 512, 26, 5);
 
 //    Q_CREATE_THREAD(base, 750, 26, 5);
-//    Q_CREATE_THREAD(button, 350, 26, 5);
+    Q_CREATE_THREAD(key, 350, 26, 5);
+//	Q_CREATE_THREAD(vl6180, 350, 26, 5);
 //    // Q_CREATE_THREAD(menu, 512, 26, 5);
-//    Q_CREATE_THREAD(shell, 350, 26, 5);
+
+//   Q_CREATE_THREAD(adc, 512, 26, 5);
 
     for (;;)
     {
-        rt_thread_mdelay(100);
+        gpio_toggle(GPIOC, GPIO_Pin_8);
+        rt_thread_mdelay(1000);
     }
 }

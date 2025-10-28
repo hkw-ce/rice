@@ -7,23 +7,23 @@
  *
  * @copyright Copyright (c) 2025
  *
- * @note 1 uartÅäÖÃ£»2 ·´×ªgpioµçÆ½
+ * @note 1 uarté…ç½®ï¼›2 åè½¬gpioç”µå¹³
  */
 
 #include "hal_conf.h"
 /**
- * @brief  GPIO ³õÊ¼»¯º¯Êı
- * @param  GPIOx: Ö¸ÏòÒªÅäÖÃµÄ GPIO ÍâÉèµÄÖ¸Õë
- * @param  pin: ÒªÅäÖÃµÄÒı½Å
- * @param  mode: GPIO Ä£Ê½
- * @param  speed: GPIO ËÙ¶È
+ * @brief  GPIO åˆå§‹åŒ–å‡½æ•°
+ * @param  GPIOx: æŒ‡å‘è¦é…ç½®çš„ GPIO å¤–è®¾çš„æŒ‡é’ˆ
+ * @param  pin: è¦é…ç½®çš„å¼•è„š
+ * @param  mode: GPIO æ¨¡å¼
+ * @param  speed: GPIO é€Ÿåº¦
  * @retval None
  */
 void gpio_config(GPIO_TypeDef *GPIOx, uint16_t pin, GPIOMode_TypeDef mode, GPIOSpeed_TypeDef speed)
 {
     GPIO_InitTypeDef GPIO_InitStruct;
 
-    // Ê¹ÄÜ¶ÔÓ¦GPIO¶Ë¿ÚÊ±ÖÓ
+    // ä½¿èƒ½å¯¹åº”GPIOç«¯å£æ—¶é’Ÿ
     if (GPIOx == GPIOA)
     {
         RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOA, ENABLE);
@@ -40,7 +40,11 @@ void gpio_config(GPIO_TypeDef *GPIOx, uint16_t pin, GPIOMode_TypeDef mode, GPIOS
     {
         RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOD, ENABLE);
     }
-    // ÆäËûGPIO¿Ú¸ù¾İĞ¾Æ¬ÊÖ²áÌí¼Ó
+	else if (GPIOx == GPIOF)
+	{
+		RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOF, ENABLE);
+	}
+    // å…¶ä»–GPIOå£æ ¹æ®èŠ¯ç‰‡æ‰‹å†Œæ·»åŠ 
 
     GPIO_StructInit(&GPIO_InitStruct);
     GPIO_InitStruct.GPIO_Pin = pin;
@@ -54,20 +58,20 @@ void gpio_toggle(GPIO_TypeDef *GPIOx, uint16_t pin)
 {
     if (GPIO_ReadOutputDataBit(GPIOx, pin))
     {
-        // µ±Ç°Îª¸ßµçÆ½£¬À­µÍ
+        // å½“å‰ä¸ºé«˜ç”µå¹³ï¼Œæ‹‰ä½
         GPIO_ResetBits(GPIOx, pin);
     }
     else
     {
-        // µ±Ç°ÎªµÍµçÆ½£¬À­¸ß
+        // å½“å‰ä¸ºä½ç”µå¹³ï¼Œæ‹‰é«˜
         GPIO_SetBits(GPIOx, pin);
     }
 }
 
 /* use demo
-// ³õÊ¼»¯ PA15£¬ÍÆÍìÊä³ö£¬50MHz
+// åˆå§‹åŒ– PA15ï¼Œæ¨æŒ½è¾“å‡ºï¼Œ50MHz
 gpio_config(GPIOA, GPIO_Pin_15, GPIO_Mode_Out_PP, GPIO_Speed_High);
-// ³õÊ¼»¯ PB3¡¢PB4¡¢PB5£¬ÍÆÍìÊä³ö£¬50MHz
+// åˆå§‹åŒ– PB3ã€PB4ã€PB5ï¼Œæ¨æŒ½è¾“å‡ºï¼Œ50MHz
 gpio_config(GPIOB, GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5, GPIO_Mode_Out_PP, GPIO_Speed_High);
 
 */

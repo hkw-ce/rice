@@ -113,16 +113,26 @@ void GN1650_print(uint8_t dig,uint8_t seg_data)
 
 // 0-9 段码 (您的自定义, bit2 DP off for no unit)
 const uint8_t seg_codes_digits[10] = {
-    0xEF & ~0x04u,  // 0: no unit
-    0x2C & ~0x04u,  // 1
-    0xB7 & ~0x04u,  // 2
-    0xBE & ~0x04u,  // 3
-    0x7C & ~0x04u,  // 4
-    0xDE & ~0x04u,  // 5
-    0xDF & ~0x04u,  // 6
-    0xAC & ~0x04u,  // 7
-    0xFF & ~0x04u,  // 8
-    0xFE & ~0x04u   // 9
+//    0xEF & ~0x04u,  // 0: no unit
+//    0x2C & ~0x04u,  // 1
+//    0xB7 & ~0x04u,  // 2
+//    0xBE & ~0x04u,  // 3
+//    0x7C & ~0x04u,  // 4
+//    0xDE & ~0x04u,  // 5
+//    0xDF & ~0x04u,  // 6
+//    0xAC & ~0x04u,  // 7
+//    0xFF & ~0x04u,  // 8
+//    0xFE & ~0x04u   // 9
+	0x3F,  // 0: A B C D E F (G=0 off, DP=0 off)
+    0x06,  // 1: B C
+    0x5B,  // 2: A B D E G
+    0x4F,  // 3: A B C D G
+    0x66,  // 4: B C F G
+    0x6D,  // 5: A C D F G
+    0x7D,  // 6: A C D E F G
+    0x07,  // 7: A B C
+    0x7F,  // 8: A B C D E F G
+    0x6F   // 9: A B C D F G
 };
 
 // A-F 段码 (基于映射推测, bit2 DP=0 off, no unit)
@@ -193,3 +203,20 @@ void display_test(void)
 }
 
 MSH_CMD_EXPORT(display_test, GN1650 0-9 + A-F test on DIG1/DIG2/DIG3 no unit (DP bit2 off));
+
+
+void gn1650_demo(uint16_t freq)
+{
+	uint8_t ge,shi, bai;
+	GN1650_init();  
+	GN1650_clear();
+	GN1650_cfg_display(GN1650_BRIGHT5);   //初始化为5级亮度，打开显示
+	
+		ge=freq%10;
+		shi=(freq/10)%10;
+		bai=(freq/100)%10;
+		GN1650_print(GN1650_DIG1,seg_codes_digits[bai]);
+		GN1650_print(GN1650_DIG2,seg_codes_digits[shi]);
+		GN1650_print(GN1650_DIG3,seg_codes_digits[ge]);
+
+}

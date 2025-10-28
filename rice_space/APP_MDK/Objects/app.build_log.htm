@@ -17,16 +17,22 @@ Library Manager: ArmAr.exe V6.19
 Hex Converter:   FromElf.exe V6.19
 CPU DLL:         SARMCM3.DLL V5.38.0.0
 Dialog DLL:      DARMCM1.DLL V1.19.6.0
-Target DLL:      UL2CM3.DLL V1.164.8.0
+Target DLL:      CMSIS_AGDI.dll V1.33.15.0
 Dialog DLL:      TARMCM1.DLL V1.14.6.0
  
 <h2>Project:</h2>
-E:\work-git\rice_cooker\rice_space\APP_MDK\app.uvprojx
-Project File Date:  10/15/2025
+E:\work-git\rice_cooker\rice\rice_space\APP_MDK\app.uvprojx
+Project File Date:  10/28/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'D:\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'Target 1'
+Build Project 'app' - Target 'app'
+compiling key.c...
+linking...
+.\Objects\app.axf: Warning: L6439W: Multiply defined Global Symbol TIM2_IRQHandler defined in .text(startup_mm32f0270_keil.o) rejected in favor of Symbol defined in .text.TIM2_IRQHandler(mm32f0270_it.o).
+Program Size: Code=40916 RO-data=3048 RW-data=320 ZI-data=10608  
+Finished: 0 information, 1 warning and 0 error messages.
+".\Objects\app.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -39,7 +45,7 @@ Package Vendor: MindMotion
   D:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

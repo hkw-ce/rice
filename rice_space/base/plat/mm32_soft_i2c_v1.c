@@ -183,6 +183,21 @@ uint8_t i2c_read_reg(i2c_bus_t *bus, uint8_t dev, uint8_t reg)
     return val;
 }
 
+/*读取设置u16寄存器*/
+uint8_t i2c_read_reg16(i2c_bus_t *bus, uint8_t dev, uint16_t reg)
+{
+    uint16_t val = 0;
+    i2c_start(bus);
+    i2c_write_byte(bus, (dev << 1) | 0);
+    i2c_write_byte(bus, reg>>8);
+    i2c_write_byte(bus, reg&0xFF);
+    i2c_start(bus);
+    i2c_write_byte(bus, (dev << 1) | 1);
+    val = i2c_read_byte(bus, 0); /* ACK after high byte read */
+    i2c_stop(bus);
+    return val;
+}
+
 void i2c_write_bytes(i2c_bus_t *bus, uint8_t dev, uint8_t reg, const uint8_t *buf, uint8_t len)
 {
     i2c_start(bus);
@@ -272,6 +287,7 @@ i2c_bus_t i2c1 = {
 .sda_pin  = GPIO_Pin_11,
 .delay_us = default_delay_us,
 };
+
 
 int i2c_auto_scan_init(void)
 {
