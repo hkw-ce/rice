@@ -220,7 +220,7 @@ void BTN2_DOUBLE_CLICK_Handler(void *btn)
     LOG_I("PWM Stopped");
 	}
 
-	
+	// rt_event_send(&env.btn_event, BTN2_DOUBLE_CLICK_FLAG);
 }
 
 void thread_key_task_entry(void *parameter)
