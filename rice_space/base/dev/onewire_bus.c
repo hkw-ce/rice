@@ -208,14 +208,14 @@ void WT588F_Init(void)
     WT588F_Set_Volume(0xEF);
     rt_thread_mdelay(100);  // 等待指令生效
 	// // 步骤 2：播放第 1 段语音（地址 01H）
-	 WT588F_Play_Voice(0x01);
-     rt_thread_mdelay(5000);  // 等待语音播放完成（需根据实际语音时长调整）
+	 WT588F_Play_Voice(0x00);
+     rt_thread_mdelay(1000);  // 等待语音播放完成（需根据实际语音时长调整）
+		 WT588F_Play_Voice(0x01);
+     rt_thread_mdelay(2000);  // 等待语音播放完成（需根据实际语音时长调整）
 		 WT588F_Play_Voice(0x02);
-     rt_thread_mdelay(5000);  // 等待语音播放完成（需根据实际语音时长调整）
+     rt_thread_mdelay(1000);  // 等待语音播放完成（需根据实际语音时长调整）
 		 WT588F_Play_Voice(0x03);
-     rt_thread_mdelay(5000);  // 等待语音播放完成（需根据实际语音时长调整）
-		 WT588F_Play_Voice(0x04);
-     rt_thread_mdelay(5000);  // 等待语音播放完成（需根据实际语音时长调整）
+     rt_thread_mdelay(1000);  // 等待语音播放完成（需根据实际语音时长调整）
 	 // 步骤 3：停止播放
     WT588F_Stop_Voice();
      rt_thread_mdelay(2000);  // 暂停 2s 后重复流程

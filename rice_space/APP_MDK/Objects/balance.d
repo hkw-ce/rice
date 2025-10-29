@@ -6,6 +6,8 @@
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h \
   ..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h \
   ..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h \
   ..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h \
@@ -13,7 +15,6 @@
   ..\base\lib\MM32F027x\HAL_Lib\Inc\hal_conf.h \
   ..\base\lib\MM32F027x\Include\mm32_device.h \
   ..\base\lib\MM32F027x\Include\mm32_reg.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\base\lib\MM32F027x\Include\types.h \
   ..\base\lib\MM32F027x\Include\reg_common.h \

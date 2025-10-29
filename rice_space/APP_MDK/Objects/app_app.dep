@@ -72,14 +72,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 F (..\base\core\main.c)(0x68F886ED)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/main.o -MD)
@@ -153,14 +154,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 I (..\base\core\main.h)(0x684FA877)
@@ -237,14 +239,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\plat\platform.h)(0x69002BE2)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 F (..\base\plat\mm32_gpio.c)(0x68F742BC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/mm32_gpio.o -MD)
@@ -387,14 +390,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 F (..\base\plat\mm32_uart.c)(0x68F1A5C8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/mm32_uart.o -MD)
@@ -468,14 +472,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\plat\platform.h)(0x69002BE2)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 F (..\base\plat\mm32f0270_it.c)(0x68CA31BA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/mm32f0270_it.o -MD)
@@ -549,14 +554,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 I (..\base\plat\mm32f0270_it.h)(0x689E8641)
@@ -631,14 +637,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 F (..\base\dev\adc.c)(0x68FF0CB2)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/adc.o -MD)
@@ -714,25 +721,28 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (..\base\dev\adc.h)(0x68F19C4D)
 I (D:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x63884908)
 F (..\base\dev\balance.c)(0x68F6EA53)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/balance.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdbg.h)(0x68CBF185)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -742,7 +752,6 @@ I (..\base\plat\platform.h)(0x69002BE2)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_conf.h)(0x66F262D7)
 I (..\base\lib\MM32F027x\Include\mm32_device.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\Include\mm32_reg.h)(0x6524AB5D)
-I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x63884908)
 I (..\base\lib\MM32F027x\Include\types.h)(0x689E8641)
 I (..\base\lib\MM32F027x\Include\reg_common.h)(0x68F9CC6D)
@@ -882,16 +891,17 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
-F (..\base\dev\hx711.c)(0x68F8C5BD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/hx711.o -MD)
+F (..\base\dev\hx711.c)(0x6901E56F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/hx711.o -MD)
 I (..\base\dev\hx711.h)(0x68F8BA94)
 I (..\base\plat\platform.h)(0x69002BE2)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_conf.h)(0x66F262D7)
@@ -963,18 +973,19 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 I (..\base\core\main.h)(0x684FA877)
-I (..\base\dev\hx711Config.h)(0x68F6F974)
+I (..\base\dev\hx711Config.h)(0x6901BFF0)
 F (..\base\dev\ina226.c)(0x68FA158F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/ina226.o -MD)
 I (D:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x63884908)
 I (..\base\core\app.h)(0x68F04B73)
@@ -1048,18 +1059,19 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 I (..\base\dev\ina226.h)(0x68F890D1)
-F (..\base\dev\key.c)(0x6900624A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/key.o -MD)
+F (..\base\dev\key.c)(0x6901B48C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/key.o -MD)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x63884908)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
@@ -1131,19 +1143,20 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (..\base\dev\key.h)(0x68F99D9F)
 I (..\3rd\MultiButton\multi_button.h)(0x68B55705)
 I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x63884908)
-F (..\base\dev\onewire_bus.c)(0x68FF0AE9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/onewire_bus.o -MD)
+F (..\base\dev\onewire_bus.c)(0x690073BA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/onewire_bus.o -MD)
 I (..\base\dev\onewire_bus.h)(0x68EDBBF1)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
@@ -1216,14 +1229,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 F (..\base\dev\PWM.c)(0x69002BCD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/pwm.o -MD)
 I (..\base\plat\platform.h)(0x69002BE2)
@@ -1296,14 +1310,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x63884908)
@@ -1380,14 +1395,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 F (..\base\dev\VL6180\vl6180x.c)(0x68F8549D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/vl6180x.o -MD)
@@ -1462,14 +1478,15 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 F (..\base\lib\MM32F027x\HAL_Lib\Src\hal_adc.c)(0x680B1A1A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/hal_adc.o -MD)
@@ -2234,9 +2251,11 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\clock.c)(0x68CBF185)(-xc -std=c99 -
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2244,9 +2263,11 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\components.c)(0x68F75866)(-xc -std=
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2254,18 +2275,22 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\cpu.c)(0x68CBF185)(-xc -std=c99 --t
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 F (..\base\rtthread-nano-4.1.1\rt-thread\src\device.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/device.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2273,18 +2298,22 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\idle.c)(0x68CBF185)(-xc -std=c99 --
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 F (..\base\rtthread-nano-4.1.1\rt-thread\src\ipc.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/ipc.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2293,18 +2322,22 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\irq.c)(0x68CBF185)(-xc -std=c99 --t
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 F (..\base\rtthread-nano-4.1.1\rt-thread\src\kservice.c)(0x68EC9926)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/kservice.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2314,9 +2347,11 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\mem.c)(0x68CBF185)(-xc -std=c99 --t
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2324,9 +2359,11 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\memheap.c)(0x68CBF185)(-xc -std=c99
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2334,18 +2371,22 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\mempool.c)(0x68CBF185)(-xc -std=c99
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 F (..\base\rtthread-nano-4.1.1\rt-thread\src\object.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/object.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2353,9 +2394,11 @@ I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 F (..\base\rtthread-nano-4.1.1\rt-thread\src\scheduler.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/scheduler.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2366,9 +2409,10 @@ I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2376,9 +2420,11 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\slab.c)(0x68CBF185)(-xc -std=c99 --
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2386,19 +2432,22 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\src\thread.c)(0x68CBF185)(-xc -std=c99 
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
-I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 F (..\base\rtthread-nano-4.1.1\rt-thread\src\timer.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/timer.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2407,9 +2456,11 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0\context_gcc.S)(0x6
 F (..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0\cpuport.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/cpuport.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2417,9 +2468,11 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\board.c)(0x68F83687)(-xc 
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2427,7 +2480,6 @@ I (..\base\plat\platform.h)(0x69002BE2)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_conf.h)(0x66F262D7)
 I (..\base\lib\MM32F027x\Include\mm32_device.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\Include\mm32_reg.h)(0x6524AB5D)
-I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x63884908)
 I (..\base\lib\MM32F027x\Include\types.h)(0x689E8641)
 I (..\base\lib\MM32F027x\Include\reg_common.h)(0x68F9CC6D)
@@ -2492,16 +2544,18 @@ I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_ver.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_wwdg.h)(0x6524AB5D)
 I (..\base\lib\MM32F027x\HAL_Lib\Inc\hal_redefine.h)(0x6524AB5D)
 I (..\base\plat\mm32_soft_i2c_v1.h)(0x68F1D27C)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x63884908)
 F (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\cmd.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/cmd.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2509,9 +2563,11 @@ I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x63884908)
 F (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\msh.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/msh.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2521,18 +2577,22 @@ I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\shell.h)(0x68CBF185)
 F (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\msh_file.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/msh_file.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
 F (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\msh_parse.c)(0x68CBF185)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/msh_parse.o -MD)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2541,9 +2601,11 @@ F (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\shell.c)(0x68CBF185)(-
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2553,11 +2615,13 @@ I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\shell.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\msh.h)(0x68CBF185)
 F (..\3rd\ulog\ulog.c)(0x68D5ED53)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/ulog.o -MD)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
@@ -2567,13 +2631,15 @@ F (..\3rd\ulog\backend\console_be.c)(0x68F08AC8)(-xc -std=c99 --target=arm-arm-n
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rthw.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtthread.h)(0x68CBF185)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x63884908)
-I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x68F75AE6)
+I (..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template\rtconfig.h)(0x6901DD8A)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdebug.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtdef.h)(0x68EF8B4F)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x63884908)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x63884908)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtservice.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\include\rtm.h)(0x68CBF185)
 I (..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\finsh.h)(0x68CBF185)
-I (..\3rd\ulog\ulog.h)(0x68F05AF4)
+I (..\3rd\ulog\ulog.h)(0x6901E10D)
 I (..\3rd\ulog\ulog_def.h)(0x68D5ED53)
 F (..\3rd\MultiButton\multi_button.c)(0x684F89D9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/MM32F027x/Include -I ../base/plat -I ../3rd/ulog -I ../3rd/MultiButton -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../base/dev/VL6180 -I ../base/lib/CMSIS/KEIL_Core-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include-D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP-o ./objects/multi_button.o -MD)
 I (..\3rd\MultiButton\multi_button.h)(0x68B55705)

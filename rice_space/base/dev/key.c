@@ -77,6 +77,9 @@ uint16_t freq = 40000;
 bool pwm_started = false;
 extern void gn1650_demo(uint16_t freq);
 extern RCC_ClocksTypeDef      RCC_Clocks;
+
+#define DUTY1 0.49
+#define DUTY2 0.52
 void BTN1_LONG_PRESS_START_Handler(void *btn)
 {
 	    LOG_I("BTN1_LONG_PRESS_START_Handler\r\n");
@@ -98,8 +101,8 @@ void BTN1_LONG_PRESS_START_Handler(void *btn)
     PSFB_TIM->ARR = arr - 1;
     LOG_I("PWM Started at %d Hz", freq);
 	gn1650_demo(freq/100);
-	 duty_cycle1 = 0.5;
-    duty_cycle2 = 0.51;
+	 duty_cycle1 = DUTY1;
+    duty_cycle2 = DUTY2;
 	LOG_I("ARR: %u", PSFB_TIM->ARR);
 	PSFB_TIM->CCR1 = PSFB_TIM->ARR*duty_cycle1;
     LOG_I("PWM1 CCR1: %d", PSFB_TIM->CCR1);
@@ -140,8 +143,8 @@ void BTN1_SINGLE_CLICK_Handler(void *btn)
 	LOG_I("ARR: %u,PSC: %u", arr,psc);
 	PSFB_TIM->ARR = arr - 1;
 	LOG_I("PWM Frequency Changed to %u Hz", freq);
-	duty_cycle1 = 0.5;
-    duty_cycle2 = 0.51;
+	duty_cycle1 = DUTY1;
+    duty_cycle2 = DUTY2;
 	LOG_I("ARR: %u", PSFB_TIM->ARR);
 	PSFB_TIM->CCR1 = PSFB_TIM->ARR*duty_cycle1;
     LOG_I("PWM1 CCR1: %d", PSFB_TIM->CCR1);
@@ -175,8 +178,8 @@ void BTN2_SINGLE_CLICK_Handler(void *btn)
 	LOG_I("ARR: %u,PSC: %u", arr,psc);
 	PSFB_TIM->ARR = arr - 1;
 	LOG_I("PWM Frequency Changed to %u Hz", freq);
-	duty_cycle1 = 0.5;
-    duty_cycle2 = 0.51;
+	duty_cycle1 = DUTY1;
+    duty_cycle2 = DUTY2;
 	LOG_I("ARR: %u", PSFB_TIM->ARR);
 	PSFB_TIM->CCR1 = PSFB_TIM->ARR*duty_cycle1;
     LOG_I("PWM1 CCR1: %d", PSFB_TIM->CCR1);

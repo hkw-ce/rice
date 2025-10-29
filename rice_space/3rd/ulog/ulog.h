@@ -17,7 +17,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+#define ULOG_USING_FLOAT
 /*
  * ulog init and deint
  */
@@ -40,10 +40,14 @@ void ulog_deinit(void);
  * LOG_D("this is a debug log!");
  * LOG_E("this is a error log!");
  */
-#define LOG_E(...)                      ulog_e(LOG_TAG, __VA_ARGS__)
-#define LOG_W(...)                      ulog_w(LOG_TAG, __VA_ARGS__)
-#define LOG_I(...)                      ulog_i(LOG_TAG, __VA_ARGS__)
-#define LOG_D(...)                      ulog_d(LOG_TAG, __VA_ARGS__)
+ #define LOG_I(fmt, ...)  rt_kprintf("\x1b[32m[I]\x1b[0m " fmt "\n", ##__VA_ARGS__)  // ??
+#define LOG_W(fmt, ...)  rt_kprintf("\x1b[33m[W]\x1b[0m " fmt "\n", ##__VA_ARGS__)  // ??
+#define LOG_E(fmt, ...)  rt_kprintf("\x1b[31m[E]\x1b[0m " fmt "\n", ##__VA_ARGS__)  // ??
+#define LOG_D(fmt, ...)  rt_kprintf("\x1b[36m[D]\x1b[0m " fmt "\n", ##__VA_ARGS__)  // ??
+//#define LOG_E(...)                      ulog_e(LOG_TAG, __VA_ARGS__)
+//#define LOG_W(...)                      ulog_w(LOG_TAG, __VA_ARGS__)
+//#define LOG_I(...)                      ulog_i(LOG_TAG, __VA_ARGS__)
+//#define LOG_D(...)                      ulog_d(LOG_TAG, __VA_ARGS__)
 #define LOG_RAW(...)                    ulog_raw(__VA_ARGS__)
 #define LOG_HEX(name, width, buf, size) ulog_hex(name, width, buf, size)
 

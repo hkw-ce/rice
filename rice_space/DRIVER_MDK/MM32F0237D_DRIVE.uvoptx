@@ -271,7 +271,7 @@
 
   <Group>
     <GroupName>plat</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -363,7 +363,7 @@
 
   <Group>
     <GroupName>dev</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -851,7 +851,7 @@
 
   <Group>
     <GroupName>ulog</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -871,7 +871,7 @@
       <GroupNumber>7</GroupNumber>
       <FileNumber>50</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\3rd\ulog\backend\console_be.c</PathWithFileName>
@@ -1147,7 +1147,7 @@
 
   <Group>
     <GroupName>rtthread/finish</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1155,7 +1155,7 @@
       <GroupNumber>11</GroupNumber>
       <FileNumber>71</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\cmd.c</PathWithFileName>
@@ -1167,7 +1167,7 @@
       <GroupNumber>11</GroupNumber>
       <FileNumber>72</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\msh.c</PathWithFileName>
@@ -1179,7 +1179,7 @@
       <GroupNumber>11</GroupNumber>
       <FileNumber>73</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\msh_file.c</PathWithFileName>
@@ -1191,7 +1191,7 @@
       <GroupNumber>11</GroupNumber>
       <FileNumber>74</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\msh_parse.c</PathWithFileName>
@@ -1203,7 +1203,7 @@
       <GroupNumber>11</GroupNumber>
       <FileNumber>75</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\shell.c</PathWithFileName>

@@ -12,7 +12,12 @@
 #define ULOG_USING_COLOR
 #define ULOG_BACKEND_USING_CONSOLE
 #define ULOG_OUTPUT_LVL      LOG_LVL_DBG   
-#define ULOG_OUTPUT_TAG   1           
+#define ULOG_OUTPUT_TAG   1  
+
+#define RT_USING_LIBC         
+#define F_FILESYSTEM           
+#define RT_LIBC_FLOAT         
+
 // <<< Use Configuration Wizard in Context Menu >>>
 
 // <h>Basic Configuration

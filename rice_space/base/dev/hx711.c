@@ -9,7 +9,7 @@
 #endif
 
 #define HAL_GetTick() rt_tick_get()
-
+static hx711_t hx711_dev;
 #define hx711_clk_pin  GPIO_Pin_7
 #define hx711_dat_pin  GPIO_Pin_6
 #define hx711_clk_gpio GPIOF
@@ -55,7 +55,7 @@
  */
 void hx711_delay_us(void)
 {
- rt_thread_mdelay(_HX711_DELAY_US_LOOP);
+ rt_hw_us_delay(_HX711_DELAY_US_LOOP);
 }
 //#############################################################################################
 /**
@@ -113,7 +113,7 @@ void hx711_init(hx711_t *hx711, GPIO_TypeDef *clk_gpio, uint16_t clk_pin, GPIO_T
   hx711->dat_gpio = dat_gpio;
   hx711->dat_pin = dat_pin;
   gpio_config(clk_gpio, clk_pin, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
-  gpio_config(dat_gpio, dat_pin, GPIO_Mode_IN_FLOATING, GPIO_Speed_50MHz);
+  gpio_config(dat_gpio, dat_pin, GPIO_Mode_FLOATING, GPIO_Speed_50MHz);
  
   /* 复位时钟信号，等待设备稳定 */
   HAL_GPIO_WritePin(hx711->clk_gpio, hx711->clk_pin, GPIO_PIN_SET);
@@ -153,8 +153,8 @@ int32_t hx711_value(hx711_t *hx711)
   while(HAL_GPIO_ReadPin(hx711->dat_gpio, hx711->dat_pin) == GPIO_PIN_SET)
   {
     hx711_delay(1);
-    if(HAL_GetTick() - startTime > 150)
-      return 0;
+//    if(HAL_GetTick() - startTime > 150)
+//      return 0;
   }
   /* 读取 24 个数据位，MSB 先 */
   for(int8_t i=0; i<24 ; i++)
@@ -170,7 +170,6 @@ int32_t hx711_value(hx711_t *hx711)
   }
   /* 将 24-bit 原始值做符号位扩展（HX711 输出是 24-bit 补码） */
   data = data ^ 0x800000; 
-  data -= 0x800000;  // 修复：二进制补码的正确符号扩展
   /* 产生额外脉冲以完成增益/通道配置（保留原实现） */
   HAL_GPIO_WritePin(hx711->clk_gpio, hx711->clk_pin, GPIO_PIN_SET);   
   hx711_delay_us();
@@ -270,7 +269,9 @@ float hx711_weight(hx711_t *hx711, uint16_t sample)
     hx711_delay(5);
   }
   int32_t data = (int32_t)(ave / sample);
+//  LOG_I("data ave = %d\n",data);
   float answer =  (data - hx711->offset) / hx711->coef;
+//  rt_kprintf("answer value = %f",answer);
   hx711_unlock(hx711);
   return answer;
 }
@@ -328,108 +329,87 @@ void hx711_power_up(hx711_t *hx711)
 }
 //#############################################################################################
 
+// 一键初始化 + 写死校准参数
+void hx711_setup_final(void)
+{
+    hx711_init(&hx711_dev, GPIOF, GPIO_Pin_7, GPIOF, GPIO_Pin_6);
+    rt_thread_mdelay(5000);  // 预热 5 秒
 
+    // 写死你的最终校准参数
+    hx711_dev.offset = 8501363L;   // 真实 0g 值
+    hx711_dev.coef   = 495.40f;    // 微调后精确 50.000g
+}
 
 //test
 
-static hx711_t hx711_dev;
+// 实时称重任务
+static void weight_task(void *parameter)
+{
+    hx711_setup_final();
+    LOG_I("HX711 已校准，开机即用！");
+
+    while (1)
+    {
+        float weight = hx711_weight(&hx711_dev, 20);  // 20次平均
+        LOG_I("重量: %.3f g", weight);
+        rt_thread_mdelay(500);
+    }
+}
+
+// 注册命令
+MSH_CMD_EXPORT(weight_task, 启动称重);
 
 static void hx711_test_entry(void *parameter)
 {
-  /*
-   * @brief HX711 功能测试入口（示例用）
-   *
-   * 该函数为演示/手动测试用例：
-   * - 初始化 HX711
-   * - 读取无载原始值并记录
-   * - 执行去皮（Tare）
-   * - 使用示例值计算并设置校准系数
-   * - 多次读取并打印转换后的重量
-   * - 最后将设备掉电
-   *
-   * 注意：此函数用于调试/演示，不应直接在生产任务中长期运行。
-   */
-    rt_uint32_t tick_start, tick_end;
-    
-//    // Initialize HX711
-//    LOG_I("Initializing HX711...");
-//    hx711_init(&hx711_dev, hx711_clk_gpio, hx711_clk_pin, hx711_dat_gpio, hx711_dat_pin);
-//    LOG_I("HX711 initialized.");
-//    
-//    // Read raw values (no load)
-//    LOG_I("Reading raw values (no load)...");
-//    int32_t raw_noload = hx711_value_ave(&hx711_dev, 10);
-//    LOG_I("Raw no-load value: %d", raw_noload);
-//    
-//    // Tare (set offset)
-//    LOG_I("Performing tare...");
-//    hx711_tare(&hx711_dev, 10);
-//    LOG_I("Tare completed. Offset: %ld", hx711_dev.offset);
-//    
-//    // Assume a known load for calibration, e.g., 100g
-//    // In real test, place known weight and measure raw_load
-//    // For demo, simulate with example values: raw_noload ~ 0, raw_load ~ 1000000, scale=100g
-//    LOG_I("Calibrating with example values (adjust for your setup)...");
-//    int32_t raw_load = 1000000;  // Example raw value with 100g load
-//    float scale = 100.0f;        // 100 grams
-//    hx711_calibration(&hx711_dev, raw_noload, raw_load, scale);
-//    LOG_I("Calibration done. Coef: %d", hx711_dev.coef*1000);
-//    
-//    // Read weight multiple times
-//    LOG_I("Reading weights...");
-//    for (int i = 0; i < 5; i++) {
+  
+LOG_I("=== HX711 终极校准（50g 高精度）===");
 
-//        float weight = hx711_weight(&hx711_dev, 5);
-//        LOG_I("Weight %d: %dg", i+1, weight*100);
-//        rt_thread_mdelay(1000);  // Delay 1s between reads
-//    }
-//    
-//    // Power down
-//    LOG_I("Powering down HX711...");
-//    hx711_power_down(&hx711_dev);
-//    
-//    LOG_I("Test completed.");
-// 初始化 HX711
-    LOG_I("正在初始化 HX711...");
     hx711_init(&hx711_dev, GPIOF, GPIO_Pin_7, GPIOF, GPIO_Pin_6);
-    LOG_I("HX711 初始化完成。");
-    
-    // 读取原始值（无负载）
-    LOG_I("读取原始值（无负载）...");
-    int32_t raw_noload = hx711_value_ave(&hx711_dev, 10);
-    LOG_I("无负载原始值: %ld", raw_noload);
-    
-    // 去皮（设置 offset）
-    LOG_I("执行去皮...");
-    hx711_tare(&hx711_dev, 10);
-    LOG_I("去皮完成。Offset: %ld", hx711_dev.offset);
-    
-    // 打印未校准的 delta 值（用于验证稳定性）
-    LOG_I("读取 delta 值（未校准，单位：计数）...");
-    for (int i = 0; i < 5; i++) {
-        int32_t raw = hx711_value_ave(&hx711_dev, 5);
-        int32_t delta = raw - hx711_dev.offset;
-        LOG_I("Delta %d: %ld", i+1, delta);
-        rt_thread_mdelay(1000);  // 读取间延迟 1s
+    LOG_I("HX711 初始化完成");
+
+    // 1. 预热 5 秒（减少漂移）
+    LOG_I("预热 5 秒，稳定传感器...");
+    rt_thread_mdelay(5000);
+
+    // 2. 去皮（无负载，30次平均）
+    LOG_I("请确保秤上无物 → 去皮...");
+    rt_thread_mdelay(2000);
+    hx711_tare(&hx711_dev, 30);
+    LOG_I("去皮完成，offset = %ld", (long)hx711_dev.offset);
+
+    // 3. 放 50g
+    LOG_I("请放上 50g 砝码 → 3秒后读取...");
+    rt_thread_mdelay(3000);
+    int32_t raw_50g = hx711_value_ave(&hx711_dev, 30);  // 30次平均！
+    LOG_I("50g 原始值 = %ld", (long)raw_50g);
+
+    int32_t delta = raw_50g - hx711_dev.offset;
+    if (delta < 1000) {
+        LOG_E("增量太小！");
+        return;
     }
-    
-    // 手动校准说明（在实际使用中取消注释并调整）
-    /*
-    LOG_I("=== 手动校准说明 ===");
-    LOG_I("1. 无负载时，raw_noload 已记录: %ld", raw_noload);
-    LOG_I("2. 放置已知重量（如 100g），读取 raw_load:");
-    int32_t raw_load = hx711_value_ave(&hx711_dev, 10);
-    LOG_I("   已知重量原始值: %ld", raw_load);
-    LOG_I("3. 假设 scale = 100.0g，调用:");
-    LOG_I("   hx711_calibration(&hx711_dev, %ld, %ld, 100.0f);", raw_noload, raw_load);
-    LOG_I("4. 然后读取重量: %.2fg", hx711_weight(&hx711_dev, 5));
-    LOG_I("====================");
-    */
-    
-    // 电源关断
-    LOG_I("关闭 HX711 电源...");
-    hx711_power_down(&hx711_dev);
-    
-    LOG_I("测试完成。");
+
+    float coef = (float)delta / 50.0f;
+    hx711_dev.coef = coef;
+
+    LOG_I("高精度校准完成！");
+    LOG_I("   delta = %ld", (long)delta);
+    LOG_I("   coef  = %.6f", coef);
+    LOG_I("   每克  = %.2f 计数", 1.0f/coef);
+
+    // 4. 高精度验证（20次平均）
+    LOG_I("高精度验证中...");
+    for (int i = 0; i < 5; i++) {
+        float w = hx711_weight(&hx711_dev, 20);  // 20次平均
+        LOG_I("  [%d] 重量 = %.3f g", i+1, w);
+        rt_thread_mdelay(1000);
+    }
+
+    LOG_I("请取下砝码 → 验证归零...");
+    rt_thread_mdelay(3000);
+    float w0 = hx711_weight(&hx711_dev, 20);
+    LOG_I("无负载 = %.3f g", w0);
+
+    LOG_I("=== 校准成功！可写死 coef ===");
 }
 MSH_CMD_EXPORT(hx711_test_entry,hx711test);
