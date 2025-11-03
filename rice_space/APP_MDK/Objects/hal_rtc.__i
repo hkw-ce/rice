@@ -1,6 +1,0 @@
--xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c
--fno-rtti -funsigned-char -fshort-enums -fshort-wchar
--D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -w -I ../base/lib/MM32F027x/Include -I ../base/lib/MM32F027x/HAL_Lib/Inc -I ../base/lib/CMSIS/KEIL_Core -I ../base/plat -I ../3rd/ulog -I ../base/core -I ../base/rtthread-nano-4.1.1/rt-thread/include -I ../base/rtthread-nano-4.1.1/rt-thread/components/finsh -I ../base/rtthread-nano-4.1.1/rt-thread/bsp/_template -I ../base/rtthread-nano-4.1.1/rt-thread/libcpu/arm/cortex-m0 -I ../3rd/MultiButton -I ../base/dev/VL6180 -I ../3rd/rtt-vl53l0x-main/inc -I ../3rd/VL53L0X/platform/inc -I ../3rd/VL53L0X/core/inc -I ../3rd/VL53L0X
--ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include
--D__UVISION_VERSION="538" -DMM32F0273D7P -DUSE_APP
--o ./objects/hal_rtc.o -MD "../base/lib/MM32F027x/HAL_Lib/Src/hal_rtc.c"

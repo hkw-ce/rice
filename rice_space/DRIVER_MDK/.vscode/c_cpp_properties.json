@@ -15,6 +15,10 @@
                 "e:\\work-git\\rice_cooker\\rice\\rice_space\\base\\rtthread-nano-4.1.1\\rt-thread\\libcpu\\arm\\cortex-m0",
                 "e:\\work-git\\rice_cooker\\rice\\rice_space\\3rd\\MultiButton",
                 "e:\\work-git\\rice_cooker\\rice\\rice_space\\base\\dev\\VL6180",
+                "e:\\work-git\\rice_cooker\\rice\\rice_space\\3rd\\rtt-vl53l0x-main\\inc",
+                "e:\\work-git\\rice_cooker\\rice\\rice_space\\3rd\\VL53L0X\\platform\\inc",
+                "e:\\work-git\\rice_cooker\\rice\\rice_space\\3rd\\VL53L0X\\core\\inc",
+                "e:\\work-git\\rice_cooker\\rice\\rice_space\\3rd\\VL53L0X",
                 "D:\\Keil_v5\\ARM\\ARMCLANG\\include",
                 "D:\\Keil_v5\\ARM\\ARMCLANG\\include\\arm_linux",
                 "D:\\Keil_v5\\ARM\\ARMCLANG\\include\\arm_linux_compat",
@@ -24,7 +28,9 @@
                 "e:\\work-git\\rice_cooker\\rice\\rice_space\\base\\lib\\MM32F027x\\Source",
                 "e:\\work-git\\rice_cooker\\rice\\rice_space\\base\\lib\\MM32F027x\\Source\\KEIL_StartAsm",
                 "e:\\work-git\\rice_cooker\\rice\\rice_space\\3rd\\ulog\\backend",
-                "e:\\work-git\\rice_cooker\\rice\\rice_space\\base\\rtthread-nano-4.1.1\\rt-thread\\src"
+                "e:\\work-git\\rice_cooker\\rice\\rice_space\\base\\rtthread-nano-4.1.1\\rt-thread\\src",
+                "e:\\work-git\\rice_cooker\\rice\\rice_space\\3rd\\VL53L0X\\platform\\src",
+                "e:\\work-git\\rice_cooker\\rice\\rice_space\\3rd\\VL53L0X\\core\\src"
             ],
             "defines": [
                 "USE_APP",
