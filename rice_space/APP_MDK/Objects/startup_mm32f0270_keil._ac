@@ -1,0 +1,5 @@
+--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c
+-gdwarf-4 -Wa,armasm,--pd,"__MICROLIB SETA 1"
+-ID:/Arm/Packs/MindMotion/MM32F0270_DFP/0.1.1/Device/MM32F027x/Include
+-Wa,armasm,--pd,"__UVISION_VERSION SETA 538" -Wa,armasm,--pd,"MM32F0273D7P SETA 1"
+-o ./objects/startup_mm32f0270_keil.o "../base/lib/MM32F027x/Source/KEIL_StartAsm/startup_mm32f0270_keil.s"

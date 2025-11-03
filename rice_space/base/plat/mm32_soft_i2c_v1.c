@@ -4,6 +4,28 @@
 #include "mm32_soft_i2c_v1.h"
 #include "rtthread.h" 
 #ifdef USER_I2C_V1
+/*
+ * Software I2C timing parameters (units: microseconds).
+ * Target: ~100 kHz SCL. These are conservative defaults — you can tune
+ * them if your MCU and delay implementation allow shorter delays.
+ *
+ * I2C clock cycle in this implementation (non-ACK bit):
+ *   T = PRE + HIGH + POST
+ * For data bits we set PRE/HIGH/POST to 3/3/3 => T = 9us (≈111 kHz).
+ * ACK bit uses a longer HIGH to give slave time to pull SDA low.
+ */
+#ifndef I2C_DELAY_PRE_US
+#define I2C_DELAY_PRE_US        3
+#define I2C_DELAY_HIGH_US       3
+#define I2C_DELAY_POST_US       3
+#define I2C_DELAY_ACK_HIGH_US  12
+#endif
+
+#define I2C_DELAY_PRE(bus)      i2c_delay_us(bus, I2C_DELAY_PRE_US)
+#define I2C_DELAY_HIGH(bus)     i2c_delay_us(bus, I2C_DELAY_HIGH_US)
+#define I2C_DELAY_POST(bus)     i2c_delay_us(bus, I2C_DELAY_POST_US)
+#define I2C_DELAY_ACK_HIGH(bus) i2c_delay_us(bus, I2C_DELAY_ACK_HIGH_US)
+
 /* 如果 bus->delay_us 为 NULL，则使用这个默认实现 */
  void default_delay_us(uint32_t us)
 {
@@ -80,15 +102,15 @@ static uint8_t i2c_clock_cycle(i2c_bus_t *bus, uint8_t data, int input_mode, int
     }
 
     /* SCL 低电平阶段保持一小段时间 */
-    i2c_delay_us(bus, 5);
+    I2C_DELAY_PRE(bus);
 
     /* SCL 上升到高电平，期间从机/主机应稳定 SDA */
     i2c_scl(bus, 1);
 
     if (is_ack_phase)
-        i2c_delay_us(bus, 30); /* ACK阶段延时更久，容错性好 */
+        I2C_DELAY_ACK_HIGH(bus); /* ACK阶段延时更久，容错性好 */
     else
-        i2c_delay_us(bus, 5);
+        I2C_DELAY_HIGH(bus);
 
     /* 采样 SDA（如果是输入模式） */
     if (input_mode)
@@ -96,7 +118,7 @@ static uint8_t i2c_clock_cycle(i2c_bus_t *bus, uint8_t data, int input_mode, int
 
     /* SCL 拉回低电平，完成一个时钟 */
     i2c_scl(bus, 0);
-    i2c_delay_us(bus, 5);
+    I2C_DELAY_POST(bus);
 
     return bit;
 }
@@ -143,20 +165,20 @@ static void i2c_start(i2c_bus_t *bus)
 {
     i2c_sda(bus, 1);
     i2c_scl(bus, 1);
-    i2c_delay_us(bus, 5);
+    I2C_DELAY_PRE(bus);
     i2c_sda(bus, 0);
-    i2c_delay_us(bus, 5);
+    I2C_DELAY_POST(bus);
     i2c_scl(bus, 0);
 }
 
 static void i2c_stop(i2c_bus_t *bus)
 {
     i2c_sda(bus, 0);
-    i2c_delay_us(bus, 5);
+    I2C_DELAY_PRE(bus);
     i2c_scl(bus, 1);
-    i2c_delay_us(bus, 5);
+    I2C_DELAY_HIGH(bus);
     i2c_sda(bus, 1);
-    i2c_delay_us(bus, 5);
+    I2C_DELAY_POST(bus);
 }
 
 /* 向设备寄存器写一个字节（不检查返回值） */
@@ -236,10 +258,10 @@ void i2c_scan(i2c_bus_t *bus)
     {
         i2c_start(bus);
         uint8_t ack = i2c_write_byte_ack(bus, (addr << 1) | 0);
-        
+         i2c_stop(bus);
         if (ack == 0)
         {
-            rt_kprintf("I2C device found at 0x%02X\r\n", addr);
+            rt_kprintf("I2C device found at 0x%02X (ACK=%d)\r\n", addr, ack);
         }
 				i2c_stop(bus);
         i2c_delay_us(bus, 50);
@@ -281,10 +303,10 @@ void i2c_bus_init(i2c_bus_t *bus)
 
 
 i2c_bus_t i2c1 = {
-.scl_port = GPIOB,
+.scl_port = GPIOA,
 .scl_pin  = GPIO_Pin_10,
-.sda_port = GPIOB,
-.sda_pin  = GPIO_Pin_11,
+.sda_port = GPIOA,
+.sda_pin  = GPIO_Pin_9,
 .delay_us = default_delay_us,
 };
 

@@ -191,10 +191,16 @@ void BTN2_SINGLE_CLICK_Handler(void *btn)
 	
 	// rt_event_send(&env.btn_event, BTN2_SINGLE_CLICK_FLAG2);
 }
-
+extern rt_thread_t hx711_tid;
 void BTN2_LONG_PRESS_START_Handler(void *btn)
 {
     LOG_I("BTN2_LONG_PRESS_START_Handler\r\n");
+	
+	
+            rt_thread_delete(hx711_tid);
+            hx711_tid = RT_NULL;
+            rt_kprintf("HX711 task stopped.\n");
+        
 	// do something...
 }
 

@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_APP</Define>
               <Undefine></Undefine>
-              <IncludePath>..\base\lib\MM32F027x\Include;..\base\lib\MM32F027x\HAL_Lib\Inc;..\base\lib\CMSIS\KEIL_Core;..\base\plat;..\3rd\ulog;..\base\core;..\base\rtthread-nano-4.1.1\rt-thread\include;..\base\rtthread-nano-4.1.1\rt-thread\components\finsh;..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template;..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0;..\3rd\MultiButton;..\base\dev\VL6180</IncludePath>
+              <IncludePath>..\base\lib\MM32F027x\Include;..\base\lib\MM32F027x\HAL_Lib\Inc;..\base\lib\CMSIS\KEIL_Core;..\base\plat;..\3rd\ulog;..\base\core;..\base\rtthread-nano-4.1.1\rt-thread\include;..\base\rtthread-nano-4.1.1\rt-thread\components\finsh;..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template;..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0;..\3rd\MultiButton;..\base\dev\VL6180;..\3rd\rtt-vl53l0x-main\inc;..\3rd\VL53L0X\platform\inc;..\3rd\VL53L0X\core\inc;..\3rd\VL53L0X</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -808,6 +808,66 @@
               <FileName>shell.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\base\rtthread-nano-4.1.1\rt-thread\components\finsh\shell.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>VL53L0X</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_VL53L0X.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\bsp_VL53L0X.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_cali.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\vl53l0x_cali.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_gen.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\vl53l0x_gen.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\vl53l0x_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\platform\src\vl53l0x_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\platform\src\vl53l0x_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\core\src\vl53l0x_api.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_api_calibration.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\core\src\vl53l0x_api_calibration.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_api_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\core\src\vl53l0x_api_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_api_ranging.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\core\src\vl53l0x_api_ranging.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l0x_api_strings.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3rd\VL53L0X\core\src\vl53l0x_api_strings.c</FilePath>
             </File>
           </Files>
         </Group>

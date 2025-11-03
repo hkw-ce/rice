@@ -157,6 +157,7 @@ void test_ntc(float vout, ntc_type_t type) {
     printf("Vout = %.3fV → R_NTC = %.2f kΩ → Temp = %.2f°C\n\n",
            vout, r_ohm / 1000.0f, temp);
 }
+extern void gn1650_demo(uint16_t freq);
 void thread_adc_task_entry(void *parameter)
 {
 
@@ -166,21 +167,21 @@ void thread_adc_task_entry(void *parameter)
     while (1)
     {
         vcc = adc_read_single(ADC1, ADC_Channel_VoltReference);
-        LOG_I("Vcc Voltage: %d mV", vcc);		
+//        LOG_I("Vcc Voltage: %d mV", vcc);		
         voltage1 = adc_read_single(ADC1, ADC_Channel_12); // 读取ADC通道12的值
         voltage2 = adc_read_single(ADC1, ADC_Channel_11); // 读取ADC通道11的值
         voltage3 = adc_read_single(ADC1, ADC_Channel_6); // 读取ADC通道6的值
         temperature = (u16)ntc_voltage_to_temperature((float)voltage3 * vcc / (4095.0f*1000), NTC_CMFB_503F3950);
-        LOG_I("pot Temperature: %d °C", temperature);
+        gn1650_demo(temperature);
+        // LOG_I("pot Temperature: %d °C", temperature);
         temperature = (u16)ntc_voltage_to_temperature((float)voltage2 * vcc / (4095.0f*1000), NTC_SDNT_1608X103F3435);
-        LOG_I("MOS2 Temperature: %d °C", temperature);
+        // LOG_I("MOS2 Temperature: %d °C", temperature);
         temperature = (u16)ntc_voltage_to_temperature((float)voltage1 * vcc / (4095.0f*1000), NTC_SDNT_1608X103F3435);
-        LOG_I("MOS1 Temperature: %d °C", temperature);
-
-        LOG_I("pot Voltage: %d mV", voltage3*3300/4095);
-        LOG_I("MOS2 Voltage: %d mV", voltage2*3300/4095);
-        LOG_I("MOS1 Voltage: %d mV", voltage1*3300/4095);
-        rt_thread_mdelay(5000); // 100ms 采样间隔
+        // LOG_I("MOS1 Temperature: %d °C", temperature);
+        // LOG_I("pot Voltage: %d mV", voltage3*3300/4095);
+        // LOG_I("MOS2 Voltage: %d mV", voltage2*3300/4095);
+        // LOG_I("MOS1 Voltage: %d mV", voltage1*3300/4095);
+        rt_thread_mdelay(1000); // 500ms 采样间隔
     }   
 
 

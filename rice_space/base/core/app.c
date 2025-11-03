@@ -28,7 +28,7 @@ void app(void)
 //	Q_CREATE_THREAD(vl6180, 350, 26, 5);
 //    // Q_CREATE_THREAD(menu, 512, 26, 5);
 
-//   Q_CREATE_THREAD(adc, 512, 26, 5);
+   Q_CREATE_THREAD(adc, 512, 26, 5);
 
     for (;;)
     {

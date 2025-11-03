@@ -5,7 +5,7 @@
 #include "types.h" 
 #include "ina226.h" 
 
-
+#define INA226_I2C i2c2
 uint16_t g_ina226_getcurrent = 0;
 uint16_t g_ina226_getavgcurrent = 0;
 
@@ -37,10 +37,10 @@ uint16_t g_ina226_getavgcurrent = 0;
 //* @param Data_H 要写入寄存器的高8位数据
 //* @param Data_L 要写入寄存器的低8位数据
 //*/
-extern i2c_bus_t i2c2;
+extern i2c_bus_t INA226_I2C;
 void INA226_WriteReg(uint8_t Register, uint8_t Data_H, uint8_t Data_L)
 {
-	i2c_write_bytes(&i2c2, INA226_ADDRESS, Register, (uint8_t[]){Data_H, Data_L}, 2);
+	i2c_write_bytes(&INA226_I2C, INA226_ADDRESS, Register, (uint8_t[]){Data_H, Data_L}, 2);
 }
 /**
 * @brief 从INA226寄存器读取数据
@@ -53,7 +53,7 @@ void INA226_WriteReg(uint8_t Register, uint8_t Data_H, uint8_t Data_L)
 uint16_t INA226_ReadReg(uint8_t RegAddress)
 {
 	uint8_t Data[2];
-	i2c_read_bytes(&i2c2, INA226_ADDRESS, RegAddress, (uint8_t*)&Data, 2);
+	i2c_read_bytes(&INA226_I2C, INA226_ADDRESS, RegAddress, (uint8_t*)&Data, 2);
 	return (Data[0] << 8) | Data[1];
 }
 /**
@@ -71,7 +71,7 @@ uint16_t INA226_ReadReg(uint8_t RegAddress)
 
 void INA226_Init(void)
 {
-    i2c_bus_init(&i2c2);// 确保使用I2C3配置
+    i2c_bus_init(&INA226_I2C);// 确保使用I2C3配置
  	INA226_WriteReg(INA226_CONFIGURATION,Configuration_H,Configuration_L);   //4次平均  1.1ms转换时间  连续检测
 	INA226_WriteReg(INA226_CALIBRATION,Calibration_H,Calibration_L);         //基准值 
 }

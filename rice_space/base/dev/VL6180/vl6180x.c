@@ -29,9 +29,9 @@
 extern i2c_bus_t i2c1;
 i2c_bus_t i2c3 = {
 .scl_port = GPIOA,
-.scl_pin  = GPIO_Pin_6,
+.scl_pin  = GPIO_Pin_10,
 .sda_port = GPIOA,
-.sda_pin  = GPIO_Pin_7,
+.sda_pin  = GPIO_Pin_9,
 .delay_us = default_delay_us,
 };
 
