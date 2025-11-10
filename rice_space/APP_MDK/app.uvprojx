@@ -52,7 +52,7 @@
           <OutputName>app</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\Listings\</ListingPath>
@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -190,7 +190,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -314,7 +314,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>7</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_APP</Define>
               <Undefine></Undefine>
-              <IncludePath>..\base\lib\MM32F027x\HAL_Lib\Inc;..\base\lib\MM32F027x\Include;..\base\plat;..\3rd\ulog;..\3rd\MultiButton;..\base\core;..\base\rtthread-nano-4.1.1\rt-thread\include;..\base\rtthread-nano-4.1.1\rt-thread\components\finsh;..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template;..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0;..\base\dev\VL6180;..\base\lib\CMSIS\KEIL_Core;..\3rd\VL53L0X;..\3rd\VL53L0X\platform\inc;..\3rd\VL53L0X\core\inc</IncludePath>
+              <IncludePath>..\base\lib\MM32F027x\HAL_Lib\Inc;..\base\lib\MM32F027x\Include;..\base\plat;..\3rd\ulog;..\3rd\MultiButton;..\base\core;..\base\rtthread-nano-4.1.1\rt-thread\include;..\base\rtthread-nano-4.1.1\rt-thread\components\finsh;..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template;..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0;..\base\dev\VL6180;..\base\lib\CMSIS\KEIL_Core;..\3rd\VL53L0X;..\3rd\VL53L0X\platform\inc;..\3rd\VL53L0X\core\inc;..\base\dev</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -385,14 +385,19 @@
           <GroupName>core</GroupName>
           <Files>
             <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\core\main.c</FilePath>
+            </File>
+            <File>
               <FileName>app.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\base\core\app.c</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
+              <FileName>ih_control.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\base\core\main.c</FilePath>
+              <FilePath>..\base\core\ih_control.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -450,16 +455,6 @@
           <GroupName>dev</GroupName>
           <Files>
             <File>
-              <FileName>adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\base\dev\adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>balance.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\base\dev\balance.c</FilePath>
-            </File>
-            <File>
               <FileName>gn1650.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\base\dev\gn1650.c</FilePath>
@@ -495,9 +490,9 @@
               <FilePath>..\base\dev\SC7A20.c</FilePath>
             </File>
             <File>
-              <FileName>vl6180x.c</FileName>
+              <FileName>NTC.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\base\dev\VL6180\vl6180x.c</FilePath>
+              <FilePath>..\base\dev\NTC.c</FilePath>
             </File>
           </Files>
         </Group>

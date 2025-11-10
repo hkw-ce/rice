@@ -142,11 +142,14 @@
 typedef struct
 {
   int16_t		gravity_x;
-  int16_t 	    gravity_y;
-  int16_t 	    gravity_z;
+  int16_t 	gravity_y;
+  int16_t 	gravity_z;
   uint8_t		int1_tag;
   uint8_t		int2_tag;
-  uint16_t		z_angle;
+  uint16_t	z_angle;
+  bool      tilted;               // 当前状态（true=倾倒）
+  uint32_t  last_change_tick; // 上次变化的时间
+  float     angle_deg;           // 当前倾角
 }SL_SC7A20_t;
 
 extern  SL_SC7A20_t sl_sc7Aa20;
@@ -203,6 +206,9 @@ void SC7A20_EXTI_SetState(BOOL enable);
  * @return BOOL: TRUE-中断已启用，FALSE-中断已禁用
  */
 BOOL SC7A20_EXTI_GetState(void);
+
+
+void SC7A20_UpdateTiltState(SL_SC7A20_t *dev);
 
 #endif /* __SL_SC7A20_DRIVER_H */
 

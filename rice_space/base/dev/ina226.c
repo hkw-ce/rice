@@ -3,7 +3,7 @@
 #include "platform.h"
 #include <stdint.h>
 #include "types.h" 
-#include "ina226.h" 
+
 
 #define INA226_I2C i2c2
 uint16_t g_ina226_getcurrent = 0;
@@ -157,7 +157,15 @@ uint16_t INA226_GetDieID(void)
 	return dieid;
 }
 
-
+void ina226_read_rice_info(rice_information_t *info)
+{
+    info->V_supply = INA226_GetBusVoltage()*2;
+    info->I_supply = INA226_GetCurrent();
+    info->P_supply = INA226_GetPower()*2;
+	#if INA226_DEBUG
+	LOG_I("INA226 Read Rice Info: V=%lu mV, I=%lu mA, P=%lu mW", info->V_supply, info->I_supply, info->P_supply);
+	#endif
+}
 void INA226_Test(void)
 {
 	uint16_t dieid = 0;

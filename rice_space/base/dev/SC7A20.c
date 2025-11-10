@@ -3,7 +3,7 @@
 #include "platform.h"
 #include <stdint.h>
 #include "types.h" 
-
+#include "SC7A20.h"
 SL_SC7A20_t sl_sc7Aa20;
 
 i2c_bus_t i2c2 = {
@@ -443,8 +443,8 @@ uint8_t SC7A20_Init(void) {
 
 
 
-/**
- * @brief  三轴检测加三轴阈值中断触发
+/**三轴阈值中断触发
+ * @brief  三轴检测加
  * @param 
  * @return 0-成功，1-数据未就绪，2-IIC读取失败
  */
@@ -886,3 +886,152 @@ BOOL SC7A20_EXTI_GetState(void)
     return FALSE;
 }
 
+//---------------------------------------------
+// SC7A20 寄存器定义
+//---------------------------------------------
+#define REG_CTRL_REG1      0x20
+#define REG_CTRL_REG2      0x21
+#define REG_CTRL_REG3      0x22
+#define REG_CTRL_REG5      0x24
+#define REG_INT1_CFG       0x30
+#define REG_INT1_SRC       0x31
+#define REG_INT1_THS       0x32
+#define REG_INT1_DURATION  0x33
+
+
+#define DEG_THRESHOLD     20.0f   // 倾倒判定角度阈值
+#define DEG_RECOVER       10.0f   // 恢复阈值
+#define DEBOUNCE_MS       200     // 防抖时间（毫秒）
+
+//sc7a20 倾倒检测初始化
+void sc7a20_init_tilt_detection(i2c_bus_t *bus)
+{
+  // 复位
+    i2c_write_reg(bus, PERIPH_SC7A20_ADD, REG_CTRL_REG2, 0x80);
+    rt_thread_mdelay(10);
+
+    // 1️⃣ ODR=25Hz, 使能XYZ
+    i2c_write_reg(bus, PERIPH_SC7A20_ADD, REG_CTRL_REG1, 0x27);
+
+    // 2️⃣ 路由 AOI1 -> INT1
+    i2c_write_reg(bus, PERIPH_SC7A20_ADD, REG_CTRL_REG3, 0x40);
+
+    // 3️⃣ 启用 latch
+    i2c_write_reg(bus, PERIPH_SC7A20_ADD, REG_CTRL_REG5, 0x08);
+
+    // 4️⃣ 6D 模式 (AOI=1,6D=1, XH/YH/ZH检测)
+    i2c_write_reg(bus, PERIPH_SC7A20_ADD, REG_INT1_CFG, 0x2A);
+
+    // 5️⃣ 阈值和持续时间
+    i2c_write_reg(bus, PERIPH_SC7A20_ADD, REG_INT1_THS, 0x08);
+    i2c_write_reg(bus, PERIPH_SC7A20_ADD, REG_INT1_DURATION, 0x05);
+
+    rt_kprintf("[SC7A20] 6D tilt interrupt initialized.\n");
+}
+
+
+/**
+ * @brief   计算与Z轴的夹角（单位°）
+ * @param   dev SC7A20 结构体（包含 x/y/z 原始值）
+ * @return  倾角（单位°）
+ */
+static float SC7A20_GetZAxisAngle2(SL_SC7A20_t *dev)
+{
+    // 转换为浮点
+    float gx = (float)(dev->gravity_x);
+    float gy = (float)(dev->gravity_y);
+    float gz = (float)(dev->gravity_z);
+
+    // 右移 4 位对齐（12-bit 输出）
+    gx /= 16.0f;
+    gy /= 16.0f;
+    gz /= 16.0f;
+
+    // 计算模长（归一化）
+    float gnorm = sqrtf(gx * gx + gy * gy + gz * gz);
+    if (gnorm < 1e-6f) gnorm = 1.0f;
+
+    // 与Z轴夹角
+    float cos_theta = gz / gnorm;
+
+    // 限幅 [-1, 1]
+    if (cos_theta > 1.0f)  cos_theta = 1.0f;
+    if (cos_theta < -1.0f) cos_theta = -1.0f;
+
+    // 计算角度（取绝对值 → 不区分正反）
+    float angle_rad = acosf(fabsf(cos_theta));
+    float angle_deg = angle_rad * 180.0f / 3.1415926536f;
+
+    return angle_deg;
+}
+
+static inline uint32_t now_ms(void)
+{
+    return (uint32_t)(rt_tick_get() * 1000 / RT_TICK_PER_SECOND); // RT_TICK_PER_SECOND=1000 -> 已是ms
+}
+
+/**
+ * @brief   根据Z轴角度判断倾倒状态（更新结构体）
+ * @param   dev SC7A20 数据结构体（包含X/Y/Z）
+ */
+void SC7A20_UpdateTiltState(SL_SC7A20_t *dev)
+{
+    SC7A20_ReadXYZ(&dev->gravity_x, &dev->gravity_y, &dev->gravity_z);
+    // 计算角度
+    dev->angle_deg = SC7A20_GetZAxisAngle2(dev);
+    dev->z_angle   = (uint16_t)(dev->angle_deg * 100.0f);  // 保留两位小数 *100
+
+    uint32_t now = now_ms(); 
+
+    if (!dev->tilted)
+    {
+        // 检测是否进入倾倒
+        if (dev->angle_deg > DEG_THRESHOLD)
+        {
+            if (dev->last_change_tick == 0)
+                dev->last_change_tick = now;
+            else if (now - dev->last_change_tick > DEBOUNCE_MS)
+            {
+                dev->tilted = true;
+                dev->last_change_tick = now;
+                rt_kprintf("[SC7A20] Tilt detected! angle=%.1f°\n", dev->angle_deg);
+            }
+        }
+        else
+        {
+            dev->last_change_tick = 0;
+        }
+    }
+    else
+    {
+        // 检测是否恢复直立
+        if (dev->angle_deg < DEG_RECOVER)
+        {
+            if (dev->last_change_tick == 0)
+                dev->last_change_tick = now;
+            else if (now - dev->last_change_tick > DEBOUNCE_MS)
+            {
+                dev->tilted = false;
+                dev->last_change_tick = now;
+                rt_kprintf("[SC7A20] Recovered. angle=%.1f°\n", dev->angle_deg);
+            }
+        }
+        else
+        {
+            dev->last_change_tick = 0;
+        }
+    }
+}
+
+void thread_sc7a20_task_entry(void *parameter)
+{
+    i2c_bus_init(&i2c2);
+    // SC7A20_Init();
+    sc7a20_init_tilt_detection(&i2c2);
+
+    while (1)
+    {
+        SC7A20_UpdateTiltState(&sl_sc7Aa20);
+        rt_thread_mdelay(100); // 每100ms更新一次
+    }
+}
