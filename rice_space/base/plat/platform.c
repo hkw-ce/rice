@@ -45,10 +45,10 @@ void console_init(uint32_t Baudrate)
 #if (SHELL_UART_PORT == USE_UART1)
   uart_config(SHELL_UART,
               Baudrate,
-              GPIOB,
-              GPIO_Pin_6, GPIO_Pin_7,
-              GPIO_PinSource6, GPIO_PinSource7,
-              GPIO_AF_0,
+              GPIOA,
+              GPIO_Pin_9, GPIO_Pin_10,
+              GPIO_PinSource9, GPIO_PinSource10,
+              GPIO_AF_1,
               IT_NULL,
               UART1_IRQn);
 #elif (SHELL_UART_PORT == USE_UART2)

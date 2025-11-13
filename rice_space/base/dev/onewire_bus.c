@@ -5,7 +5,7 @@
 #include "stdint.h"
 
 // 1. 引脚定义
-#define WT588F_DATA_PIN    GPIO_Pin_5    // DATA 线（输出）
+#define WT588F_DATA_PIN    GPIO_Pin_7    // DATA 线（输出）
 #define WT588F_BUSY_PIN    GPIO_Pin_4    // BUSY 脚（输入）
 #define WT588F_DATA_PORT   GPIOB         
 #define WT588F_BUSY_PORT   GPIOF         

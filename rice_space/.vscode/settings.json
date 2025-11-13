@@ -1,6 +1,8 @@
 {
     "files.associations": {
-        "platform.h": "c"
+        "platform.h": "c",
+        "sc7a20.h": "c",
+        "typeinfo": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -7,8 +7,8 @@
 #include "platform.h"
 #include "multi_button.h"
 
-#define K_1       GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_7)
-#define K_2       GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_6)
+#define K_1       GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_11)
+#define K_2       GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)
 //#define K_3       GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_12)
 
 // 状态机

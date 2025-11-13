@@ -5,7 +5,15 @@
 #include "types.h" 
 
 
-#define INA226_I2C i2c2
+#define INA226_I2C i2c3
+
+i2c_bus_t i2c3 = {
+.scl_port = GPIOC,
+.scl_pin  = GPIO_Pin_2,
+.sda_port = GPIOC,
+.sda_pin  = GPIO_Pin_3,
+.delay_us = default_delay_us,
+};
 uint16_t g_ina226_getcurrent = 0;
 uint16_t g_ina226_getavgcurrent = 0;
 

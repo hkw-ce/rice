@@ -28,13 +28,18 @@ const char *state_name[] = {
 
 int gpio_init(void)
 {
-	gpio_config(GPIOC, GPIO_Pin_13, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
-	gpio_config(GPIOC, GPIO_Pin_14, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
-	gpio_config(GPIOC, GPIO_Pin_8, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
-	gpio_config(GPIOC, GPIO_Pin_15, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);  //enable pin for 12V power
-	GPIO_SetBits(GPIOC, GPIO_Pin_15); //打开12V电源
-	GPIO_ResetBits(GPIOC, GPIO_Pin_13); //打开3.3V电源
-	GPIO_SetBits(GPIOC, GPIO_Pin_14); //打开5V电源
+	// gpio_config(GPIOC, GPIO_Pin_13, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
+	// gpio_config(GPIOC, GPIO_Pin_14, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
+	// gpio_config(GPIOC, GPIO_Pin_8, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
+	// gpio_config(GPIOC, GPIO_Pin_15, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);  //enable pin for 12V power
+	// GPIO_SetBits(GPIOC, GPIO_Pin_15); //打开12V电源
+	// GPIO_ResetBits(GPIOC, GPIO_Pin_13); //打开3.3V电源
+	// GPIO_SetBits(GPIOC, GPIO_Pin_14); //打开5V电源
+     gpio_config(GPIOC, GPIO_Pin_15, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);  //系统运行指示灯
+	 gpio_config(GPIOA, GPIO_Pin_1, GPIO_Mode_Out_PP, GPIO_Speed_50MHz); 
+	gpio_config(GPIOB, GPIO_Pin_8, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
+	GPIO_SetBits(GPIOB, GPIO_Pin_8);
+	GPIO_SetBits(GPIOA, GPIO_Pin_1);
 	return 0;
 }                                            
 INIT_APP_EXPORT(gpio_init);
@@ -53,274 +58,75 @@ uint8_t read_button_GPIO(uint8_t button_id)
 	switch (button_id)
 	{
 	case KEY1:
-		return (K_1==0 && K_2 == 0 )?0:1;
+		return K_1;
 	case KEY2:
-        return (K_1==0 && K_2 == 1 )?0:1;
+        return K_2;
     default:
         return 1; // 默认返回未按下状态    
     }
 }
 
-/**
- * @brief  初始化按键
- * @note   引脚映射：PA11（OUT1）、P12（OUT2），（触摸按键编码输出端口）
- *          * 触摸按键与 OUT1/OUT2 输出电平对应关系表
- *          +------------+-------+-------+o·
- *          | 触摸按键   | OUT2  | OUT1  |
- *          +------------+-------+-------+
- *          | KEY1       | o     | 0     |
- *          | KEY2       | 0     | 1     |
- *          | 无按键      | 1     | 1     |
- *          +------------+-------+-------+
- */
-// int Key_Init(void)
-// {
-//  	GPIO_InitTypeDef GPIO_InitStructure;
-
-//     GPIO_StructInit(&GPIO_InitStructure);
-// 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14;
-// 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-//     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-// 	GPIO_Init(GPIOC, &GPIO_InitStructure);
-// 	return 0;
-// }
-// INIT_APP_EXPORT(Key_Init);
-uint16_t freq = 40000;
-bool pwm_started = false;
 extern void gn1650_demo(uint16_t freq);
 extern RCC_ClocksTypeDef      RCC_Clocks;
+extern void start_cooking(void);
 
-#define DUTY1 0.49
-#define DUTY2 0.52
-//void BTN1_LONG_PRESS_START_Handler(void *btn)
-//{
-//	    LOG_I("BTN1_LONG_PRESS_START_Handler\r\n");
-//	  uint16_t arr,psc;
-//   	 float duty_cycle1,duty_cycle2;
-//	 if (pwm_started == false)
-//	 {
-//		gpio_config(GPIOA, GPIO_Pin_4, GPIO_Mode_Out_PP, GPIO_Speed_50MHz); // PWM使能
-//	 GPIO_SetBits(GPIOA, GPIO_Pin_4); // 使能PWM输出
-//	RCC_GetClocksFreq(&RCC_Clocks);
-//    LOG_I("SystemCoreClock: %lu", RCC_Clocks.SYSCLK_Frequency);
-//    LOG_I("HCLK_Frequency: %lu", RCC_Clocks.HCLK_Frequency);
-//    LOG_I("PCLK1_Frequency: %lu", RCC_Clocks.PCLK1_Frequency);
-//    LOG_I("PCLK2_Frequency: %lu", RCC_Clocks.PCLK2_Frequency);
-//    LOG_I("ADCCLK_Frequency: %lu", RCC_Clocks.ADCCLK_Frequency);
-//    arr =RCC_Clocks.PCLK1_Frequency*2/ (freq*2); // 计算ARR
-//    psc = 1; // 预分频器设为1
-//    LOG_I("ARR: %u,PSC: %u", arr,psc);
-//    PSFB_TIM->ARR = arr - 1;
-//    LOG_I("PWM Started at %d Hz", freq);
-//	gn1650_demo(freq/100);
-//	 duty_cycle1 = DUTY1;
-//    duty_cycle2 = DUTY2;
-//	LOG_I("ARR: %u", PSFB_TIM->ARR);
-//	PSFB_TIM->CCR1 = PSFB_TIM->ARR*duty_cycle1;
-//    LOG_I("PWM1 CCR1: %d", PSFB_TIM->CCR1);
-//    PSFB_TIM->CCR2 = PSFB_TIM->ARR*duty_cycle2;
-//    LOG_I("PWM2 CCR2: %d", PSFB_TIM->CCR2);
-//	pwm_started=true;
-//	LOG_I("PWM Started");
-//	 }
-//	 
-//     
-
-//	// rt_event_send(&env.btn_event, EVENT_START_FLAG);
-//}
-//void BTN1_DOUBLE_CLICK_Handler(void *btn)
-//{
-//	// do something...
-//    LOG_I("BTN1_DOUBLE_CLICK_Handler\r\n");
-
-//	// rt_event_send(&env.btn_event, EVENT_STOP_FLAG);
-//}
-//void BTN1_SINGLE_CLICK_Handler(void *btn)
-//{
-//	// do something...
-//	LOG_I("BTN1_SINGLE_CLICK_Handler\r\n");
-//	if (pwm_started)
-//	{
-//		freq=freq-500;
-//	if(freq<25000)
-//	{
-//		freq=25000;
-//	}
-//	LOG_I(" PWM Frequency: %u Hz", freq);
-//	gn1650_demo(freq/100);
-//	uint16_t arr,psc;
-//	float duty_cycle1,duty_cycle2;
-//	arr =RCC_Clocks.PCLK1_Frequency*2/ (freq*2); // 计算ARR
-//	psc = 1; // 预分频器设为1
-//	LOG_I("ARR: %u,PSC: %u", arr,psc);
-//	PSFB_TIM->ARR = arr - 1;
-//	LOG_I("PWM Frequency Changed to %u Hz", freq);
-//	duty_cycle1 = DUTY1;
-//    duty_cycle2 = DUTY2;
-//	LOG_I("ARR: %u", PSFB_TIM->ARR);
-//	PSFB_TIM->CCR1 = PSFB_TIM->ARR*duty_cycle1;
-//    LOG_I("PWM1 CCR1: %d", PSFB_TIM->CCR1);
-//    PSFB_TIM->CCR2 = PSFB_TIM->ARR*duty_cycle2;
-//    LOG_I("PWM2 CCR2: %d", PSFB_TIM->CCR2);
-//	}
-//	
-//	
-//	// rt_event_send(&env.btn_event, BTN1_SINGLE_CLICK_FLAG);
-//}
-
-//void BTN2_SINGLE_CLICK_Handler(void *btn)
-//{
-//	// do something...
-//    LOG_I("BTN2_SINGLE_CLICK_Handler\r\n");
-//	if (pwm_started)
-//	{
-//		freq=freq+500;
-//	
-//	if(freq>40000)
-//	{
-//		freq=40000;
-//	}
-//	LOG_I(" PWM Frequency: %u Hz", freq);
-//	gn1650_demo(freq/100);
-//	uint16_t arr,psc;
-//	float duty_cycle1,duty_cycle2;
-//   
-//	arr =RCC_Clocks.PCLK1_Frequency*2/ (freq*2); // 计算ARR
-//	psc = 1; // 预分频器设为1
-//	LOG_I("ARR: %u,PSC: %u", arr,psc);
-//	PSFB_TIM->ARR = arr - 1;
-//	LOG_I("PWM Frequency Changed to %u Hz", freq);
-//	duty_cycle1 = DUTY1;
-//    duty_cycle2 = DUTY2;
-//	LOG_I("ARR: %u", PSFB_TIM->ARR);
-//	PSFB_TIM->CCR1 = PSFB_TIM->ARR*duty_cycle1;
-//    LOG_I("PWM1 CCR1: %d", PSFB_TIM->CCR1);
-//    PSFB_TIM->CCR2 = PSFB_TIM->ARR*duty_cycle2;
-//    LOG_I("PWM2 CCR2: %d", PSFB_TIM->CCR2);
-
-//	}
-//	
-//	
-//	// rt_event_send(&env.btn_event, BTN2_SINGLE_CLICK_FLAG2);
-//}
-//extern rt_thread_t hx711_tid;
-//void BTN2_LONG_PRESS_START_Handler(void *btn)
-//{
-//    LOG_I("BTN2_LONG_PRESS_START_Handler\r\n");
-//	
-////	
-////            rt_thread_delete(hx711_tid);
-////            hx711_tid = RT_NULL;
-////            rt_kprintf("HX711 task stopped.\n");
-//        
-//	// do something...
-//}
-
-//void BTN2_DOUBLE_CLICK_Handler(void *btn)
-//{
-//	
-//	LOG_I("BTN2_DOUBLE_CLICK_Handler\r\n"); 
-//	if(pwm_started==true)
-//	{
-//		pwm_started=false;
-//		// do something...
-// 
-//	float duty_cycle1,duty_cycle2;	
-//    duty_cycle1 = 0;
-//    duty_cycle2 = 0;
-//	LOG_I("ARR: %u", PSFB_TIM->ARR);
-//	PSFB_TIM->CCR1 = PSFB_TIM->ARR*duty_cycle1;
-//    LOG_I("PWM1 CCR1: %d", PSFB_TIM->CCR1);
-//    PSFB_TIM->CCR2 = PSFB_TIM->ARR*duty_cycle2;
-//    LOG_I("PWM2 CCR2: %d", PSFB_TIM->CCR2);
-//	freq=40000;
-//	gn1650_demo(000);
-//    LOG_I("PWM Stopped");
-//	}
-
-//	// rt_event_send(&env.btn_event, BTN2_DOUBLE_CLICK_FLAG);
-//}
-
-
-
-
-
-// void log_rice_change(void)  { if (rice_type != last_rice_type)  { LOG_I("Rice → %s (r%d)\r\n", rice_name[rice_type], rice_type + 1); last_rice_type = rice_type; } }
-// void log_mode_change(void)  { if (cook_mode != last_cook_mode)  { LOG_I("Mode → %s (P%d)\r\n", mode_name[cook_mode], cook_mode + 1); last_cook_mode = cook_mode; } }
-// void log_book_change(void)  { if (book_hour != last_book_hour)  { LOG_I("Book → %d小时\r\n", book_hour); last_book_hour = book_hour; } }
-
-// 启动烹饪
-// void start_cooking(void)
-// {
-//     switch (cook_mode)
-//     {
-//     case 0: cook_timer = 30*60; LOG_I("Cooking: 精煮 30分钟"); break;
-//     case 1: cook_timer = 15*60; LOG_I("Cooking: 快煮 15分钟"); break;
-//     case 2: cook_timer = 45*60; LOG_I("Cooking: 稀饭 45分钟"); break;
-//     case 3: cook_timer = 10*60; LOG_I("Cooking: 热饭 10分钟"); break;
-//     }
-// //    heater_on();
-// //    voice_play(VOICE_START);
-//     LOG_I("Heater ON, Cooking Started");
-// }
-#define KEY_NUM 2
+#define KEY_NUM 1
 // ==================== 按键事件处理函数 ====================
 #if KEY_NUM == 2
-void BTN1_SINGLE_CLICK_Handler(void *btn)
-{
-LOG_I("BTN1_SINGLE_CLICK_Handler");
-    switch (state)
+    void BTN1_SINGLE_CLICK_Handler(void *btn)
     {
-    case STANDBY:     LOG_I("→ Enter RICE_SEL"); state = RICE_SEL; rice_type = 0; break;
-    case RICE_SEL:    LOG_I("→ Rice: %s", rice_name[rice_type]); rice_type = (rice_type + 1) % 3; break;
-    case MODE_SEL:    LOG_I("→ Mode: %s", mode_name[cook_mode]); cook_mode = (cook_mode + 1) % 4; break;
-    case BOOK_SET:    LOG_I("→ Book Hour: %d", book_hour); book_hour = (book_hour + 1) % 13; break;
+    LOG_I("BTN1_SINGLE_CLICK_Handler");
+        switch (state)
+        {
+        case STANDBY:     LOG_I("→ Enter RICE_SEL"); state = RICE_SEL; rice_type = 0; break;
+        case RICE_SEL:    LOG_I("→ Rice: %s", rice_name[rice_type]); rice_type = (rice_type + 1) % 3; break;
+        case MODE_SEL:    LOG_I("→ Mode: %s", mode_name[cook_mode]); cook_mode = (cook_mode + 1) % 4; break;
+        case BOOK_SET:    LOG_I("→ Book Hour: %d", book_hour); book_hour = (book_hour + 1) % 13; break;
+        }
     }
-}
 
-void BTN1_DOUBLE_CLICK_Handler(void *btn)
-{
-    LOG_I("BTN1_DOUBLE_CLICK_Handler");
-    if (state == RICE_SEL) { LOG_I("→ Jump to MODE_SEL"); state = MODE_SEL; }
-    else if (state == MODE_SEL) { LOG_I("→ Jump to BOOK_SET"); state = BOOK_SET; }
-}
-void BTN1_LONG_PRESS_START_Handler(void *btn)
-{
-    LOG_I("BTN1_LONG_PRESS_START_Handler → Force Back to STANDBY");
-    state = STANDBY;
-//    heater_off();
-//    seg_display("----");
-//    ws2812_set_off();
-}
-extern void start_cooking(void);
-void BTN2_SINGLE_CLICK_Handler(void *btn)
-{
-    LOG_I("BTN2_SINGLE_CLICK_Handler");
-    switch (state)
+    void BTN1_DOUBLE_CLICK_Handler(void *btn)
     {
-    case RICE_SEL: LOG_I("→ Enter MODE_SEL"); state = MODE_SEL; break;
-    case MODE_SEL:
-        if (cook_mode == 3) { LOG_I("→ Enter BOOK_SET"); state = BOOK_SET; }
-        else { LOG_I("→ Start Cooking: %s", mode_name[cook_mode]); start_cooking(); state = COOKING; }
-        break;
-    case BOOK_SET:
-        LOG_I("→ Booking Confirmed: %d小时", book_hour);
-        book_timer = book_hour * 3600;
-        state = BOOK_WAIT;
-        break;
+        LOG_I("BTN1_DOUBLE_CLICK_Handler");
+        if (state == RICE_SEL) { LOG_I("→ Jump to MODE_SEL"); state = MODE_SEL; }
+        else if (state == MODE_SEL) { LOG_I("→ Jump to BOOK_SET"); state = BOOK_SET; }
     }
-}
+    void BTN1_LONG_PRESS_START_Handler(void *btn)
+    {
+        LOG_I("BTN1_LONG_PRESS_START_Handler → Force Back to STANDBY");
+        state = STANDBY;
+    //    heater_off();
+    //    seg_display("----");
+    //    ws2812_set_off();
+    }
+    extern void start_cooking(void);
+    void BTN2_SINGLE_CLICK_Handler(void *btn)
+    {
+        LOG_I("BTN2_SINGLE_CLICK_Handler");
+        switch (state)
+        {
+        case RICE_SEL: LOG_I("→ Enter MODE_SEL"); state = MODE_SEL; break;
+        case MODE_SEL:
+            if (cook_mode == 3) { LOG_I("→ Enter BOOK_SET"); state = BOOK_SET; }
+            else { LOG_I("→ Start Cooking: %s", mode_name[cook_mode]); start_cooking(); state = COOKING; }
+            break;
+        case BOOK_SET:
+            LOG_I("→ Booking Confirmed: %d小时", book_hour);
+            book_timer = book_hour * 3600;
+            state = BOOK_WAIT;
+            break;
+        }
+    }
 
-void BTN2_LONG_PRESS_START_Handler(void *btn)
-{
-    LOG_I("BTN2_LONG_PRESS_START_Handler → Cancel & Back to STANDBY");
-    state = STANDBY;
-//    heater_off();
-//    seg_display("----");
-//    ws2812_set_color(0x0000FF);
-}
-#elif KEY_NUM == 1
-
+    void BTN2_LONG_PRESS_START_Handler(void *btn)
+    {
+        LOG_I("BTN2_LONG_PRESS_START_Handler → Cancel & Back to STANDBY");
+        state = STANDBY;
+    //    heater_off();
+    //    seg_display("----");
+    //    ws2812_set_color(0x0000FF);
+    }
+ #elif KEY_NUM == 1
     // ==================== 多按键任务入口 ====================
     void BTN1_SINGLE_CLICK_Handler(void *btn)
     {
@@ -362,7 +168,8 @@ void BTN2_LONG_PRESS_START_Handler(void *btn)
     void BTN1_LONG_PRESS_START_Handler(void *btn)
     {
         LOG_I("[EVENT] KEY Long Press\r\n");
-
+		state = STANDBY;
+		LOG_I("state-->STANDBY\r\n");
     }
 
     void BTN2_SINGLE_CLICK_Handler(void *btn)
@@ -374,6 +181,7 @@ void BTN2_LONG_PRESS_START_Handler(void *btn)
     void BTN2_LONG_PRESS_START_Handler(void *btn)
     {
         LOG_I("BTN2_LONG_PRESS_START_Handler → Cancel & Back to STANDBY");
+		gpio_toggle(GPIOB, GPIO_Pin_8);
     }
 
 #endif
@@ -382,15 +190,15 @@ void thread_key_task_entry(void *parameter)
 {
 
     // 初始化多按键模块
-    gpio_config(GPIOC, GPIO_Pin_6, GPIO_Mode_IPU, GPIO_Speed_50MHz);
-    gpio_config(GPIOC, GPIO_Pin_7, GPIO_Mode_IPU, GPIO_Speed_50MHz);
-    button_init(&btn1, read_button_GPIO, 0, KEY1);
+    gpio_config(GPIOC, GPIO_Pin_11, GPIO_Mode_IPU, GPIO_Speed_50MHz);
+    gpio_config(GPIOC, GPIO_Pin_13, GPIO_Mode_IPU, GPIO_Speed_50MHz);
+    button_init(&btn1, read_button_GPIO, 0, KEY1);    //控制按键
 	button_attach(&btn1, LONG_PRESS_START, BTN1_LONG_PRESS_START_Handler);
 	button_attach(&btn1, DOUBLE_CLICK, BTN1_DOUBLE_CLICK_Handler);
 	button_attach(&btn1, SINGLE_CLICK, BTN1_SINGLE_CLICK_Handler);
 	button_start(&btn1);
 
-    button_init(&btn2, read_button_GPIO, 0, KEY2);
+    button_init(&btn2, read_button_GPIO, 0, KEY2); //一键启动
 //	button_attach(&btn2, DOUBLE_CLICK, BTN2_DOUBLE_CLICK_Handler);
 	button_attach(&btn2, SINGLE_CLICK, BTN2_SINGLE_CLICK_Handler);
 	button_attach(&btn2, LONG_PRESS_START, BTN2_LONG_PRESS_START_Handler);

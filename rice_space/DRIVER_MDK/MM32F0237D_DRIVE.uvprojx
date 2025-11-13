@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_APP</Define>
               <Undefine></Undefine>
-              <IncludePath>..\base\lib\MM32F027x\Include;..\base\lib\MM32F027x\HAL_Lib\Inc;..\base\lib\CMSIS\KEIL_Core;..\base\plat;..\3rd\ulog;..\base\core;..\base\rtthread-nano-4.1.1\rt-thread\include;..\base\rtthread-nano-4.1.1\rt-thread\components\finsh;..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template;..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0;..\3rd\MultiButton;..\base\dev\VL6180;..\3rd\rtt-vl53l0x-main\inc;..\3rd\VL53L0X\platform\inc;..\3rd\VL53L0X\core\inc;..\3rd\VL53L0X</IncludePath>
+              <IncludePath>..\base\lib\MM32F027x\Include;..\base\lib\MM32F027x\HAL_Lib\Inc;..\base\lib\CMSIS\KEIL_Core;..\base\plat;..\3rd\ulog;..\base\core;..\base\rtthread-nano-4.1.1\rt-thread\include;..\base\rtthread-nano-4.1.1\rt-thread\components\finsh;..\base\rtthread-nano-4.1.1\rt-thread\bsp\_template;..\base\rtthread-nano-4.1.1\rt-thread\libcpu\arm\cortex-m0;..\3rd\MultiButton;..\base\dev\VL6180;..\3rd\rtt-vl53l0x-main\inc;..\3rd\VL53L0X\platform\inc;..\3rd\VL53L0X\core\inc;..\3rd\VL53L0X;..\base\dev</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -439,6 +439,11 @@
               <FileType>1</FileType>
               <FilePath>..\base\dev\PWM.c</FilePath>
             </File>
+            <File>
+              <FileName>mm32_pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\plat\mm32_pwm.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -460,16 +465,6 @@
               <FilePath>..\base\dev\key.c</FilePath>
             </File>
             <File>
-              <FileName>vl6180x.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\base\dev\VL6180\vl6180x.c</FilePath>
-            </File>
-            <File>
-              <FileName>adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\base\dev\adc.c</FilePath>
-            </File>
-            <File>
               <FileName>ina226.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\base\dev\ina226.c</FilePath>
@@ -483,6 +478,11 @@
               <FileName>onewire_bus.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\base\dev\onewire_bus.c</FilePath>
+            </File>
+            <File>
+              <FileName>NTC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\base\dev\NTC.c</FilePath>
             </File>
           </Files>
         </Group>

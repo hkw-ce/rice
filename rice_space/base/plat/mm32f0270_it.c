@@ -147,6 +147,17 @@ __WEAK void TIM2_IRQHandler(void)
 /**
  * @}
  */
+extern bool adc_transtion_complete;
+void DMA1_Channel1_IRQHandler(void)
+{
+    if (DMA_GetITStatus(DMA1_FLAG_TC1))
+    {
+        DMA_ClearFlag(DMA1_FLAG_TC1);
+        adc_transtion_complete = TRUE;
+        // 在此处添加DMA传输完成后的处理代码
+
+    }
+}
 
 /**
  * @}

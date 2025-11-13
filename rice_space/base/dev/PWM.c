@@ -16,7 +16,7 @@ void full_bridge_init(uint16_t arr,uint16_t psc)
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
     TIM_OCInitTypeDef TIM_OCInitStructure;
 	RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOA, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1ENR_TIM2, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2ENR_TIM1, ENABLE);
     GPIO_PinAFConfig(PSFB_GPIO, PSFB_PWM1_PIN_SOURCE, PSFB_GPIO_AF);   //TIM2_CH1
     GPIO_PinAFConfig(PSFB_GPIO, PSFB_PWM2_PIN_SOURCE, PSFB_GPIO_AF);   //TIM2_CH2
 
@@ -103,7 +103,7 @@ void pwm_frequency_test(int argc, char **argv[])
     }
 
 }
-MSH_CMD_EXPORT(pwm_frequency_test,pwm_frequency_test);
+//MSH_CMD_EXPORT(pwm_frequency_test,pwm_frequency_test);
 
 
 void set_pwm_duty(int argc, char **argv[])
@@ -128,4 +128,4 @@ void set_pwm_duty(int argc, char **argv[])
           LOG_I("PWM2 CCR2: %d", PSFB_TIM->CCR2);
     }
 }
-MSH_CMD_EXPORT(set_pwm_duty,set_pwm_duty);
+//MSH_CMD_EXPORT(set_pwm_duty,set_pwm_duty);

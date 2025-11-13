@@ -1,4 +1,7 @@
 #include "app.h"
+
+#define sys_led_toggle()   gpio_toggle(GPIOC, GPIO_Pin_15)
+
 #define Q_CREATE_THREAD(name, thread_stack_size, thread_priority, time_tick)    \
     do                                                                          \
     {                                                                           \
@@ -33,7 +36,7 @@ void app(void)
 //    Q_CREATE_THREAD(sc7a20, 512, 26, 5);
     for (;;)
     {
-        gpio_toggle(GPIOC, GPIO_Pin_8);
+        sys_led_toggle();
         rt_thread_mdelay(1000);
     }
 }

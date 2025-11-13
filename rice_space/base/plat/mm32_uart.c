@@ -104,6 +104,65 @@ void uart_config(UART_TypeDef *UARTx,
     UART_Cmd(UARTx, ENABLE);
 }
 
+void single_uart_config(UART_TypeDef *UARTx,
+                        uint32_t Baudrate,
+                        GPIO_TypeDef *GPIOx,
+                        uint16_t Pin,
+                        uint8_t PinSource,
+                        uint8_t GPIO_AF,
+                        uint8_t it_mode,
+                        IRQn_Type IRQn)
+{
+    GPIO_InitTypeDef GPIO_InitStruct;
+    UART_InitTypeDef UART_InitStruct;
+    NVIC_InitTypeDef NVIC_InitStruct;
+
+    if (UARTx == UART1) 
+        RCC_APB2PeriphClockCmd(RCC_APB2ENR_UART1, ENABLE);
+    else if (UARTx == UART2)
+        RCC_APB1PeriphClockCmd(RCC_APB1ENR_UART2, ENABLE);
+    else if (UARTx == UART3)
+        RCC_APB1PeriphClockCmd(RCC_APB1ENR_UART3, ENABLE);
+
+    if (GPIOx == GPIOA)
+        RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOA, ENABLE);
+    else if (GPIOx == GPIOB)
+        RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOB, ENABLE);
+    else if (GPIOx == GPIOC)
+        RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOC, ENABLE);
+
+    UART_StructInit(&UART_InitStruct);
+    UART_InitStruct.BaudRate      = Baudrate;
+    UART_InitStruct.WordLength    = UART_WordLength_8b;
+    UART_InitStruct.StopBits      = UART_StopBits_1;
+    UART_InitStruct.Parity        = UART_Parity_No;
+    UART_InitStruct.HWFlowControl = UART_HWFlowControl_None;
+    UART_InitStruct.Mode          = UART_Mode_Rx | UART_Mode_Tx;
+    UART_Init(UARTx, &UART_InitStruct);
+
+    UART_HalfDuplexCmd(UARTx, ENABLE);
+    GPIO_PinAFConfig(GPIOx, PinSource, GPIO_AF);
+
+    GPIO_StructInit(&GPIO_InitStruct);
+    GPIO_InitStruct.GPIO_Pin   = Pin;
+    GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_InitStruct.GPIO_Mode  = GPIO_Mode_IPU;
+    GPIO_Init(GPIOx, &GPIO_InitStruct);
+
+    if (it_mode != IT_NULL)
+    {
+        UART_ITConfig(UARTx, UART_IT_RXIEN, ENABLE);
+        if (it_mode == UART_IDLE)
+            UARTx->IER |= UART_IER_RXIDLE;
+        // 4. 配置中断
+        NVIC_InitStruct.NVIC_IRQChannel = IRQn;
+        NVIC_InitStruct.NVIC_IRQChannelPriority = 0x01;
+        NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+        NVIC_Init(&NVIC_InitStruct);
+    }
+    UART_Cmd(UARTx, ENABLE);
+}
+
 void UART_SendBytes(UART_TypeDef *uart, const uint8_t *data, uint32_t length)
 {
     for (uint32_t i = 0; i < length; i++)

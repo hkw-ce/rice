@@ -15,6 +15,7 @@ extern "C"
 #include <stdio.h>
 #include "ina226.h" 
 #include "SC7A20.h"
+#include "stdlib.h"
  /********************* DEBUG相关的宏定义 *************************************/
 #define NTC_DEBUG       0
 #define INA226_DEBUG    0
@@ -49,10 +50,9 @@ extern "C"
   typedef struct
   {
     UART_TypeDef *uart;
-
-    uint8_t rx_buf[UART_RX_BUF_SIZE]; // 接收缓冲??
+    uint8_t rx_buf[UART_RX_BUF_SIZE]; // 接收缓冲区
     volatile uint16_t rx_len;         // 当前接收长度
-    volatile uint8_t rx_ok;           // 接收完成标志（IDLE触发后置1??
+    volatile uint8_t rx_ok;           // 接收完成标志（IDLE触发后置1)
     uart_rx_callback_t callback;
     uart_idle_rx_callback_t idle_callback;
   } uart_t;
@@ -119,6 +119,11 @@ typedef struct {
     uint16_t     T_bottom;
     uint16_t     T_lid;
     uint16_t     T_side;
+    uint16_t     T_mos1;
+    uint16_t     T_mos2;
+    uint16_t     T_out;
+    uint16_t     T_base;
+    uint32_t     V_resonant;
     uint32_t     V_supply;
     uint32_t     I_supply;
     uint32_t     P_supply;
@@ -167,7 +172,7 @@ extern rice_information_t rice_info;
   // adc_config
   void adc_config_single(ADC_TypeDef *hadc);
   uint16_t adc_read_single(ADC_TypeDef *hadc, uint8_t channel);
-
+ void adc_anychannel_dma(uint8_t *channels, uint8_t channel_count, uint16_t *adc_buffer, uint16_t buffer_size,DMA_Channel_TypeDef* dma_channel);
 void rt_hw_us_delay(rt_uint32_t us);
   // i2c
   void i2c_config(I2C_TypeDef *i2c, uint8_t dev_addr, GPIO_TypeDef *GPIOx, uint16_t sck_pin, uint16_t sda_pin);
@@ -195,14 +200,20 @@ void thread_sample_task_entry(void *parameter);
   /********************* 平台相关的宏定义 *************************************/
 
 //pwm
-#define PSFB_TIM               TIM2
-#define PSFB_PWM1              GPIO_Pin_0
-#define PSFB_PWM1_PIN_SOURCE   GPIO_PinSource0
+#define PSFB_TIM               TIM1
+#define PSFB_PWM1              GPIO_Pin_8
+#define PSFB_PWM1_PIN_SOURCE   GPIO_PinSource8
 #define PSFB_PWM2              GPIO_Pin_1
 #define PSFB_PWM2_PIN_SOURCE   GPIO_PinSource1
 #define PSFB_GPIO              GPIOA
 #define PSFB_GPIO_AF           GPIO_AF_2
-#define F(str) (str)
+
+#define PSF_COMP_TIM               TIM1
+#define PSFB_DEADTIME              50  // 死区时间，单位：定时器时钟周期
+#define PSFB_COMP_CH               1
+
+
+void TIM1_PWM_Complementary_SingleChannel_Config(uint8_t channel, uint16_t period, uint16_t deadtime);
 
 void full_bridge_init(uint16_t arr,uint16_t psc);
 	

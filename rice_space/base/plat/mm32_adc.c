@@ -82,6 +82,9 @@ void enable_gpio_clock(GPIO_TypeDef *gpio_port)
         RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOC, ENABLE);
     else if (gpio_port == GPIOD)
         RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOD, ENABLE);
+    else if (gpio_port == GPIOF)
+        RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOF, ENABLE);
+
     // 需要可继续扩展
 }
 
@@ -119,91 +122,6 @@ void adc_config_single(ADC_TypeDef *hadc)
  */
 uint16_t adc_read_single(ADC_TypeDef *hadc, ADCCHANNEL_TypeDef channel)
 {
-//    if (channel == ADC_Channel_VoltReference)
-//    {
-//    ADC_InitTypeDef ADC_InitStruct;
-
-//    RCC_APB2PeriphClockCmd(RCC_APB2ENR_ADC1, ENABLE);
-
-//    ADC_StructInit(&ADC_InitStruct);
-//    ADC_InitStruct.ADC_Resolution         = ADC_Resolution_12b;
-//    ADC_InitStruct.ADC_PRESCARE           = ADC_PCLK2_PRESCARE_16;
-//    ADC_InitStruct.ADC_Mode               = ADC_Mode_Scan;
-//    ADC_InitStruct.ADC_ContinuousConvMode = DISABLE;
-//    ADC_InitStruct.ADC_ExternalTrigConv   = ADC1_ExternalTrigConv_T1_CC1;
-//    ADC_InitStruct.ADC_DataAlign          = ADC_DataAlign_Right;
-//    ADC_Init(ADC1, &ADC_InitStruct);
-
-//    ADC_RegularChannelConfig(ADC1, ADC_Channel_TempSensor,    0, ADC_Samctl_240_5);
-//    ADC_RegularChannelConfig(ADC1, ADC_Channel_VoltReference, 0, ADC_Samctl_240_5);
-
-//    ADC_TempSensorVrefintCmd(ENABLE);
-
-//    ADC_Cmd(ADC1, ENABLE);
-
-//    
-//    uint16_t Value;
-
-//    float Voltage, Temperature;
-
-//		uint16_t OffsetV = *(volatile uint16_t *)(0x1FFFF7E0);
-//		uint16_t OffsetT = *(volatile uint16_t *)(0x1FFFF7F6) & 0x0FFF;
-//      ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-//      while (RESET == ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC))
-//        {
-//        }
-
-//        ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
-
-//        /* Internal voltage sensor */
-//        Value = ADC_GetChannelConvertedValue(ADC1, ADC_Channel_VoltReference);
-
-//        Voltage = (float)(OffsetV) * (float)3.3 / (float)Value;
-
-//        /* Internal temperature sensor */
-//        Value = ADC_GetChannelConvertedValue(ADC1, ADC_Channel_TempSensor);
-
-//        Temperature = 25 + ((float)Value * (float)Voltage * (float)1000 - (float)OffsetT * (float)3300) / ((float)4096 * (float)4.955);
-//        return (uint16_t)(Voltage * 1000);
-//    }
-//    else
-//	{
-//    GPIO_InitTypeDef GPIO_InitStruct;
-//    // 配置单通道采样时间
-//    ADC_RegularChannelConfig(hadc, channel, 0, ADC_Samctl_240_5);
-//    // 配置采样通道数量 从0开始
-//    ADC_ANY_NUM_Config(hadc, 0);
-//    ADC_ANY_CH_Config(ADC1, 0, channel);
-//    ADC_ANY_Cmd(ADC1, ENABLE);
-
-//    // 配置对应的GPIO模拟输入
-//    GPIO_TypeDef *port = NULL;
-//    uint16_t pin = 0;
-//    if (adc_channel_to_gpio(channel, &port, &pin) == 0)
-//    {
-//        enable_gpio_clock(port);
-//        GPIO_StructInit(&GPIO_InitStruct);
-//        GPIO_InitStruct.GPIO_Pin = pin;
-//        GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
-//        GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AIN;
-//        GPIO_Init(port, &GPIO_InitStruct);
-//    }
-//    else
-//    {
-//        // 处理错误：通道不支持
-//    }
-
-//    ADC_SoftwareStartConvCmd(hadc, ENABLE);
-// 
-//     while (RESET == ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC))
-//        {
-//        }
-
-//    ADC_ClearFlag(hadc, ADC_FLAG_EOC);
-
-//    return ADC_GetChannelConvertedValue(hadc, channel);
-//}
-
     ADC_InitTypeDef ADC_InitStruct;
     GPIO_InitTypeDef GPIO_InitStruct;
     uint16_t value = 0;
@@ -299,4 +217,91 @@ uint16_t adc_read_single(ADC_TypeDef *hadc, ADCCHANNEL_TypeDef channel)
     }
 }
 
+void adc_anychannel_dma(uint8_t *channels, uint8_t channel_count, uint16_t *adc_buffer, uint16_t buffer_size,DMA_Channel_TypeDef* dma_channel)
+{
+    ADC_InitTypeDef  ADC_InitStruct;
+    DMA_InitTypeDef  DMA_InitStruct;
+    GPIO_InitTypeDef GPIO_InitStruct;
+    NVIC_InitTypeDef NVIC_InitStruct;
+    GPIO_TypeDef *gpio_port;
+    uint16_t gpio_pin;
+    uint8_t i;
 
+    /* --- 打开时钟 --- */
+    RCC_APB2PeriphClockCmd(RCC_APB2ENR_ADC1, ENABLE);
+    RCC_AHBPeriphClockCmd(RCC_AHBENR_DMA1, ENABLE);
+    /* --- 配置 ADC 基本参数 --- */
+    ADC_StructInit(&ADC_InitStruct);
+    ADC_InitStruct.ADC_Resolution         = ADC_Resolution_12b;
+    ADC_InitStruct.ADC_PRESCARE           = ADC_PCLK2_PRESCARE_16;
+    ADC_InitStruct.ADC_Mode               = ADC_Mode_Continue;
+    ADC_InitStruct.ADC_ContinuousConvMode = ENABLE;
+    ADC_InitStruct.ADC_ExternalTrigConv   = ADC1_ExternalTrigConv_T1_CC1;
+    ADC_InitStruct.ADC_DataAlign          = ADC_DataAlign_Right;
+    ADC_Init(ADC1, &ADC_InitStruct);
+    /* --- 配置 ADC 通道对应的 GPIO --- */
+    for (i = 0; i < channel_count; i++)
+    {
+        if (adc_channel_to_gpio(channels[i], &gpio_port, &gpio_pin) == 0)
+        {
+            enable_gpio_clock(gpio_port);
+            GPIO_StructInit(&GPIO_InitStruct);
+            GPIO_InitStruct.GPIO_Pin   = gpio_pin;
+            GPIO_InitStruct.GPIO_Mode  = GPIO_Mode_AIN;
+            GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+            GPIO_Init(gpio_port, &GPIO_InitStruct);
+			ADC_RegularChannelConfig(ADC1, channels[i],0, ADC_Samctl_240_5);
+        }
+    }
+
+
+
+    /* --- 配置 ADC 任意通道 --- */
+    ADC_ANY_NUM_Config(ADC1, channel_count - 1);  // 注意：通道号从0开始
+    for (i = 0; i < channel_count; i++)
+    {
+        ADC_ANY_CH_Config(ADC1, i, channels[i]);
+    }
+    ADC_ANY_Cmd(ADC1, ENABLE);
+    ADC_DMACmd(ADC1, ENABLE);
+    ADC_Cmd(ADC1, ENABLE);
+
+    /* --- 配置 DMA --- */
+    DMA_DeInit(dma_channel);
+    DMA_StructInit(&DMA_InitStruct);
+    DMA_InitStruct.DMA_PeripheralBaseAddr = (uint32_t)&(ADC1->ADDATA);
+    DMA_InitStruct.DMA_MemoryBaseAddr     = (uint32_t)adc_buffer;
+    DMA_InitStruct.DMA_DIR                = DMA_DIR_PeripheralSRC;
+    DMA_InitStruct.DMA_BufferSize         = buffer_size;
+    DMA_InitStruct.DMA_PeripheralInc      = DMA_PeripheralInc_Disable;
+    DMA_InitStruct.DMA_MemoryInc          = DMA_MemoryInc_Enable;
+    DMA_InitStruct.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
+    DMA_InitStruct.DMA_MemoryDataSize     = DMA_MemoryDataSize_HalfWord;
+    DMA_InitStruct.DMA_Mode               = DMA_Mode_Circular;
+    DMA_InitStruct.DMA_Priority           = DMA_Priority_High;
+    DMA_InitStruct.DMA_M2M                = DMA_M2M_Disable;
+    DMA_InitStruct.DMA_Auto_reload        = DMA_Auto_Reload_Disable;
+    DMA_Init(dma_channel, &DMA_InitStruct);
+   
+    /* --- 配置中断 --- */
+if (dma_channel == DMA1_Channel1) {
+    DMA_ClearFlag(DMA1_FLAG_TC1);
+    NVIC_InitStruct.NVIC_IRQChannel = DMA1_Channel1_IRQn;
+}
+else if (dma_channel == DMA1_Channel2) {
+    DMA_ClearFlag(DMA1_FLAG_TC2);
+    NVIC_InitStruct.NVIC_IRQChannel = DMA1_Channel2_3_IRQn;
+}
+
+    
+    
+	DMA_ITConfig(dma_channel, DMA_IT_TC, ENABLE);
+
+    NVIC_InitStruct.NVIC_IRQChannelPriority = 1;
+    NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStruct);
+
+    /* --- 启动 DMA --- */
+    DMA_Cmd(dma_channel, ENABLE);
+ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+}

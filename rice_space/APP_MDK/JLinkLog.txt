@@ -1,0 +1,138 @@
+T3404 078:959.535   SEGGER J-Link V7.82 Log File
+T3404 078:959.609   DLL Compiled: Oct 13 2022 13:32:51
+T3404 078:959.615   Logging started @ 2025-11-13 10:31
+T3404 078:959.618 - 15.585ms
+T3404 078:959.624 JLINK_SetWarnOutHandler(...)
+T3404 078:959.628 - 0.005ms
+T3404 078:959.647 JLINK_OpenEx(...)
+T3404 078:961.227   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T3404 078:961.565   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T3404 078:961.797   Decompressing FW timestamp took 166 us
+T3404 078:969.933   Hardware: V9.40
+T3404 078:969.963   S/N: 69403497
+T3404 078:969.972   OEM: SEGGER
+T3404 078:969.980   Feature(s): RDI, GDB, FlashDL, FlashBP, JFlash
+T3404 078:971.270   TELNET listener socket opened on port 19021
+T3404 078:975.060   WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+T3404 078:975.284   WEBSRV Webserver running on local port 19080
+T3404 078:983.640 - 24.025ms returns "O.K."
+T3404 078:983.699 JLINK_GetEmuCaps()
+T3404 078:983.708 - 0.012ms returns 0xB9FF7BBF
+T3404 078:983.721 JLINK_TIF_GetAvailable(...)
+T3404 078:983.908 - 0.201ms
+T3404 078:983.933 JLINK_SetErrorOutHandler(...)
+T3404 078:983.937 - 0.005ms
+T3404 078:983.949 JLINK_ExecCommand("ProjectFile = "E:\work-git\rice_cooker\rice\rice_space\APP_MDK\JLinkSettings.ini"", ...). 
+T3404 078:985.167 - 1.228ms returns 0x00
+T3404 078:985.197 JLINK_ExecCommand("Device = MM32F0273D7P", ...). 
+T3404 078:985.341   Flash bank @ 0x08000000: SFL: Parsing sectorization info from ELF file
+T3404 078:985.348     FlashDevice.SectorInfo[0]: .SectorSize = 0x00000400, .SectorStartAddr = 0x00000000
+T3404 078:985.354   OFL: Init() present @ offset 0x0000000D
+T3404 078:985.359   OFL: UnInit() present @ offset 0x00000051
+T3404 078:985.364   OFL: EraseSector() present @ offset 0x000001C3
+T3404 078:985.370   OFL: ProgramPage() present @ offset 0x0000022F
+T3404 078:985.374   OFL: EraseChip() present @ offset 0x000001AF
+T3404 078:985.379   OFL: BlankCheck() present @ offset 0x00000229
+T3404 078:985.384   OFL: Verify() N/A
+T3404 078:985.389   OFL: SEGGER_FL_Erase() N/A
+T3404 078:985.394   OFL: SEGGER_OPEN_Erase() N/A
+T3404 078:985.399   OFL: SEGGER_FL_Program() N/A
+T3404 078:985.404   OFL: SEGGER_OPEN_Program() N/A
+T3404 078:985.408   OFL: SEGGER_FL_Read() N/A
+T3404 078:985.413   OFL: SEGGER_OPEN_Read() N/A
+T3404 078:985.418   OFL: SEGGER_FL_CalcCRC() N/A
+T3404 078:985.423   OFL: SEGGER_OPEN_CalcCRC() N/A
+T3404 078:985.428   OFL: SEGGER_FL_Start() N/A
+T3404 078:985.433   OFL: SEGGER_OPEN_Start() N/A
+T3404 078:985.438   OFL: SEGGER_FL_GetFlashInfo() N/A
+T3404 078:985.442   OFL: SEGGER_OPEN_GetFlashInfo() N/A
+T3404 078:985.447   OFL: SEGGER_FL_Verify() N/A
+T3404 078:985.452   OFL: SEGGER_FL_CheckBlank() N/A
+T3404 078:985.457   OFL: SEGGER_FL_Prepare() N/A
+T3404 078:985.462   OFL: SEGGER_FL_Restore() N/A
+T3404 078:985.467   OFL: SEGGER_FL_EraseChip() N/A
+T3404 078:985.537   Device "MM32F0273D7P" selected.
+T3404 078:985.757 - 0.558ms returns 0x00
+T3404 078:985.770 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T3404 078:985.776 - 0.002ms returns 0x01
+T3404 078:985.780 JLINK_GetHardwareVersion()
+T3404 078:985.783 - 0.004ms returns 94000
+T3404 078:985.788 JLINK_GetDLLVersion()
+T3404 078:985.791 - 0.004ms returns 78200
+T3404 078:985.795 JLINK_GetOEMString(...)
+T3404 078:985.799 JLINK_GetFirmwareString(...)
+T3404 078:985.805 - 0.008ms
+T3404 078:985.814 JLINK_GetDLLVersion()
+T3404 078:985.818 - 0.005ms returns 78200
+T3404 078:985.822 JLINK_GetCompileDateTime()
+T3404 078:985.825 - 0.005ms
+T3404 078:986.147 JLINK_GetFirmwareString(...)
+T3404 078:986.152 - 0.006ms
+T3404 078:986.157 JLINK_GetHardwareVersion()
+T3404 078:986.161 - 0.005ms returns 94000
+T3404 078:986.166 JLINK_GetSN()
+T3404 078:986.170 - 0.005ms returns 69403497
+T3404 078:986.174 JLINK_GetOEMString(...)
+T3404 078:986.180 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T3404 078:986.669 - 0.492ms returns 0x00
+T3404 078:986.677 JLINK_HasError()
+T3404 078:986.682 JLINK_SetSpeed(5000)
+T3404 078:986.809 - 0.130ms
+T3404 078:987.139 JLINK_HasError()
+T3404 078:987.151 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T3404 078:987.197 - 0.047ms returns JLINKARM_RESET_TYPE_NORMAL
+T3404 078:987.201 JLINK_Reset()
+T3404 078:988.928   ConfigTargetSettings() start
+T3404 078:988.943    J-Link Script File: Executing ConfigTargetSettings()
+T3404 078:988.949   [ConfigTargetSettings]
+T3404 078:989.213   ConfigTargetSettings() end
+T3404 078:989.222   InitTarget() start
+T3404 078:989.227    J-Link Script File: Executing InitTarget()
+T3404 079:074.180   InitTarget() end
+T3404 079:177.610   Failed to attach to CPU. Trying connect under reset.
+T3404 079:762.049   ConfigTargetSettings() start
+T3404 079:762.076    J-Link Script File: Executing ConfigTargetSettings()
+T3404 079:762.083   [ConfigTargetSettings]
+T3404 079:762.351   ConfigTargetSettings() end
+T3404 079:762.370   InitTarget() start
+T3404 079:762.375    J-Link Script File: Executing InitTarget()
+T3404 079:764.841   InitTarget() end
+T3404 079:870.759 - 883.589ms
+T3404 079:870.814 JLINK_GetId()
+T3404 079:871.163   ConfigTargetSettings() start
+T3404 079:871.183    J-Link Script File: Executing ConfigTargetSettings()
+T3404 079:871.194   [ConfigTargetSettings]
+T3404 079:871.545   ConfigTargetSettings() end
+T3404 079:871.564   InitTarget() start
+T3404 079:871.569    J-Link Script File: Executing InitTarget()
+T3404 079:874.070   InitTarget() end
+T3404 080:040.766   ConfigTargetSettings() start
+T3404 080:040.811    J-Link Script File: Executing ConfigTargetSettings()
+T3404 080:040.825   [ConfigTargetSettings]
+T3404 080:041.154   ConfigTargetSettings() end
+T3404 080:041.175   InitTarget() start
+T3404 080:041.180    J-Link Script File: Executing InitTarget()
+T3404 080:043.656   InitTarget() end
+T3404 080:148.743 - 277.980ms returns 0x00000000
+T3404 080:148.858 JLINK_GetId()
+T3404 080:149.178   ConfigTargetSettings() start
+T3404 080:149.206    J-Link Script File: Executing ConfigTargetSettings()
+T3404 080:149.219   [ConfigTargetSettings]
+T3404 080:149.818   ConfigTargetSettings() end
+T3404 080:149.834   InitTarget() start
+T3404 080:149.839    J-Link Script File: Executing InitTarget()
+T3404 080:152.259   InitTarget() end
+T3404 080:317.303   ConfigTargetSettings() start
+T3404 080:317.334    J-Link Script File: Executing ConfigTargetSettings()
+T3404 080:317.341   [ConfigTargetSettings]
+T3404 080:317.935   ConfigTargetSettings() end
+T3404 080:317.952   InitTarget() start
+T3404 080:317.957    J-Link Script File: Executing InitTarget()
+T3404 080:320.624   InitTarget() end
+T3404 080:426.104 - 277.289ms returns 0x00000000
+T3404 080:427.826 JLINK_GetFirmwareString(...)
+T3404 080:427.847 - 0.023ms
+T3404 080:839.405 JLINK_Close()
+T3404 080:862.043 - 22.703ms
+T3404 080:862.113   
+T3404 080:862.119   Closed

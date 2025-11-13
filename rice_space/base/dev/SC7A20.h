@@ -152,7 +152,7 @@ typedef struct
   float     angle_deg;           // 当前倾角
 }SL_SC7A20_t;
 
-extern  SL_SC7A20_t sl_sc7Aa20;
+extern  SL_SC7A20_t sl_sc7A20;
 extern int16_t x_acc, y_acc, z_acc;
 /********客户需要进行的IIC接口封包函数****************/
 extern unsigned char SL_SC7A20_I2c_Spi_Write(unsigned char sl_spi_iic,unsigned char reg, unsigned char data);
