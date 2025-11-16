@@ -204,12 +204,12 @@ void thread_sample_task_entry(void *parameter);
 #define PSFB_PWM1              GPIO_Pin_8
 #define PSFB_PWM1_PIN_SOURCE   GPIO_PinSource8
 #define PSFB_PWM2              GPIO_Pin_1
-#define PSFB_PWM2_PIN_SOURCE   GPIO_PinSource1
+#define PSFB_PWM2_PIN_SOURCE   GPIO_PinSource1 
 #define PSFB_GPIO              GPIOA
 #define PSFB_GPIO_AF           GPIO_AF_2
 
 #define PSF_COMP_TIM               TIM1
-#define PSFB_DEADTIME              50  // 死区时间，单位：定时器时钟周期
+#define PSFB_DEADTIME              48  // 死区时间，单位：定时器时钟周期
 #define PSFB_COMP_CH               1
 
 

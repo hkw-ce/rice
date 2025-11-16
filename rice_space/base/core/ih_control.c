@@ -192,10 +192,10 @@ static void power_auto_control(void)
 static bool safety_check(void)
 {
     if (rice_info.T_bottom > 185 || rice_info.T_side > 155 || rice_info.T_lid > 125) {
-        IH_LOG_E("过温保护！底:%d°C 侧:%d°C 盖:%d°C", rice_info.T_bottom, rice_info.T_side, rice_info.T_lid);
-        ih_pwm_enable(false);
-        state = STANDBY;
-        return false;
+//        IH_LOG_E("过温保护！底:%d°C 侧:%d°C 盖:%d°C", rice_info.T_bottom, rice_info.T_side, rice_info.T_lid);
+//        ih_pwm_enable(false);
+//        state = STANDBY;
+//        return false;
     }
     return true;
 }

@@ -65,7 +65,8 @@ uint8_t read_button_GPIO(uint8_t button_id)
         return 1; // 默认返回未按下状态    
     }
 }
-
+sys_state_t state = STANDBY;
+sys_state_t last_state = (sys_state_t)-1;
 extern void gn1650_demo(uint16_t freq);
 extern RCC_ClocksTypeDef      RCC_Clocks;
 extern void start_cooking(void);

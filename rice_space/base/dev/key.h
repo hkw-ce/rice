@@ -22,8 +22,8 @@ typedef enum {
     BOOK_WAIT
 } sys_state_t;
 
-static sys_state_t state = STANDBY;
-static sys_state_t last_state = (sys_state_t)-1;
+extern sys_state_t state ;
+extern sys_state_t last_state;
 
 static uint8_t rice_type = 0;
 static uint8_t last_rice_type = 0xFF;

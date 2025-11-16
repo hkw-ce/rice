@@ -118,7 +118,8 @@ void TIM1_PWM_Complementary_SingleChannel_Config(uint8_t channel, uint16_t perio
 //    TIM_BDTRInitStruct.TIM_BreakPolarity   = TIM_BreakPolarity_High;
 //    TIM_BDTRInitStruct.TIM_AutomaticOutput = TIM_AutomaticOutput_Enable;
 //    TIM_BDTRConfig(TIM1, &TIM_BDTRInitStruct);
-		TIM1->BDTR |= deadtime;   
+	    TIM1->BDTR &= ~0xFF; 
+		TIM1->BDTR |= (uint8_t)deadtime;   
 
     /* --- 启动定时器与输出 --- */
     TIM_Cmd(TIM1, ENABLE);
@@ -163,7 +164,8 @@ void pwm_set_freq_cmd(int argc, char **argv)
         LOG_I("Usage: pwm_set_freq <freq_hz> [deadtime_ns]\n");
         return;
     }
-
+    TIM_CtrlPWMOutputs(TIM1, DISABLE);
+	TIM_Cmd(TIM1, DISABLE);
     uint32_t freq = (uint32_t)atoi(argv[1]);
     uint32_t deadtime_ns = 104;  // 默认 10 个时钟周期（96MHz -> 104.2ns）
     if (argc >= 3) deadtime_ns = (uint32_t)atoi(argv[2]);
@@ -183,7 +185,7 @@ void pwm_set_freq_cmd(int argc, char **argv)
      */
 #if defined(RCC) && defined(RCC_CFGR_PPRE2)
     if ((RCC->CFGR & RCC_CFGR_PPRE2) != 0) {
-        tim_clk = pclk2 * 2;
+        tim_clk = pclk2;
     }
 #endif
 
@@ -205,8 +207,8 @@ void pwm_set_freq_cmd(int argc, char **argv)
     /* 时钟周期（ns）= 1e9 / tim_clk (Hz)
        死区周期数 = deadtime_ns / (1e9 / tim_clk) = deadtime_ns * tim_clk / 1e9 */
     /* 使用 64-bit 避免 deadtime_ns * tim_clk 溢出 (deadtime_ns up to 1e9, tim_clk up to ~1e8) */
-    uint64_t tmp = (uint64_t)deadtime_ns * (uint64_t)tim_clk + 500000000ULL; /* 四舍五入 */
-    uint32_t deadtime_cycles = (uint32_t)(tmp / 1000000000ULL);
+    uint64_t tmp = (uint64_t)deadtime_ns * (uint64_t)tim_clk ;
+   uint32_t deadtime_cycles =(deadtime_ns/1000.0)*96 ;//(uint32_t)(tmp / 1000000000ULL);
     if (deadtime_cycles < 1) deadtime_cycles = 1;
     if (deadtime_cycles > 255) deadtime_cycles = 255;  /* TIM1 BDTR 中 DeadTime 为 8-bit */
     
@@ -221,7 +223,7 @@ void pwm_set_freq_cmd(int argc, char **argv)
     TIM_CCxNCmd(TIM1, TIM_Channel_1, TIM_CCxN_Enable);
     TIM_CtrlPWMOutputs(TIM1, ENABLE);
 
-    uint32_t actual_freq = tim_clk / (2 * period16);  /* 中心对齐模式：频率 = f_clk / (2*ARR) */
+    uint32_t actual_freq = tim_clk / ( period16);  /* 中心对齐模式：频率 = f_clk / (2*ARR) */
     uint64_t clk_ns_u64 = (1000000000ULL + (tim_clk/2)) / (uint64_t)tim_clk; /* 四舍五入的时钟周期(ns) */
 
     LOG_I("PWM set: freq=%lu Hz (actual=%lu Hz) ARR=%u CCR=%u\n",
