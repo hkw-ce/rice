@@ -27,7 +27,7 @@ void app(void)
     // Q_CREATE_THREAD(flash, 1024 * 1 + 512, 26, 5);
 
 //    Q_CREATE_THREAD(base, 750, 26, 5);
-    Q_CREATE_THREAD(key, 350, 5, 5);
+    Q_CREATE_THREAD(key, 512, 5, 5);
 //	Q_CREATE_THREAD(vl6180, 350, 26, 5);
 //    // Q_CREATE_THREAD(menu, 512, 26, 5);
 

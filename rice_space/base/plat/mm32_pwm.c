@@ -201,7 +201,7 @@ void pwm_set_freq_cmd(int argc, char **argv)
     }
 
     uint16_t period16 = (uint16_t)period;
-    uint16_t ccr = period16 / 2;  /* 默认 50% 占空比（中心对齐模式） */
+    uint16_t ccr = period16 *0.55;  /* 默认 50% 占空比（中心对齐模式） */
 
     /* 将死区时间（纳秒）转换为定时器时钟周期数 */
     /* 时钟周期（ns）= 1e9 / tim_clk (Hz)

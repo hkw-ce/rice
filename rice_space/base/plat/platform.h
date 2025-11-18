@@ -128,6 +128,7 @@ typedef struct {
     uint32_t     I_supply;
     uint32_t     P_supply;
     SL_SC7A20_t  gyro;
+	uint32_t     W_rice_water
 } rice_information_t;
 extern rice_information_t rice_info;
 
@@ -197,13 +198,18 @@ void INA226_Init(void);
 //task
 void thread_sample_task_entry(void *parameter);
 
+
+//语音芯片
+void WT588F_Play_Voice(uint8_t voice_addr);
+void WT588F_GPIO_Init(void);
+
   /********************* 平台相关的宏定义 *************************************/
 
 //pwm
 #define PSFB_TIM               TIM1
-#define PSFB_PWM1              GPIO_Pin_8
+#define PSFB_PWM1              GPIO_Pin_11
 #define PSFB_PWM1_PIN_SOURCE   GPIO_PinSource8
-#define PSFB_PWM2              GPIO_Pin_1
+#define PSFB_PWM2              GPIO_Pin_12
 #define PSFB_PWM2_PIN_SOURCE   GPIO_PinSource1 
 #define PSFB_GPIO              GPIOA
 #define PSFB_GPIO_AF           GPIO_AF_2
@@ -216,6 +222,16 @@ void thread_sample_task_entry(void *parameter);
 void TIM1_PWM_Complementary_SingleChannel_Config(uint8_t channel, uint16_t period, uint16_t deadtime);
 
 void full_bridge_init(uint16_t arr,uint16_t psc);
+	
+//ih_control
+void set_ih_power_w(float power_w);
+//extern uint8_t rice_type;
+//extern uint8_t cook_mode;
+//extern uint8_t book_hour;
+//extern sys_state_t state;
+extern void start_cooking(void);
+
+	
 	
 
 #ifdef __cplusplus

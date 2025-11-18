@@ -359,118 +359,118 @@ static void weight_task(void *parameter)
 // 注册命令
 MSH_CMD_EXPORT(weight_task, 启动称重);
 
-// static void hx711_test_entry(void *parameter)
-// {
+ static void hx711_test_entry(void *parameter)
+ {
   
-// LOG_I("=== HX711 终极校准（50g 高精度）===");
+ LOG_I("=== HX711 终极校准（50g 高精度）===");
 
-//     hx711_init(&hx711_dev, GPIOF, GPIO_Pin_7, GPIOF, GPIO_Pin_6);
-//     LOG_I("HX711 初始化完成");
+     hx711_init(&hx711_dev, GPIOF, GPIO_Pin_7, GPIOF, GPIO_Pin_6);
+     LOG_I("HX711 初始化完成");
 
-//     // 1. 预热 5 秒（减少漂移）
-//     LOG_I("预热 5 秒，稳定传感器...");
-//     rt_thread_mdelay(5000);
+     // 1. 预热 5 秒（减少漂移）
+     LOG_I("预热 5 秒，稳定传感器...");
+     rt_thread_mdelay(5000);
 
-//     // 2. 去皮（无负载，30次平均）
-//     LOG_I("请确保秤上无物 → 去皮...");
-//     rt_thread_mdelay(2000);
-//     hx711_tare(&hx711_dev, 30);
-//     LOG_I("去皮完成，offset = %ld", (long)hx711_dev.offset);
+     // 2. 去皮（无负载，30次平均）
+     LOG_I("请确保秤上无物 → 去皮...");
+     rt_thread_mdelay(2000);
+     hx711_tare(&hx711_dev, 30);
+     LOG_I("去皮完成，offset = %ld", (long)hx711_dev.offset);
 
-//     // 3. 放 50g
-//     LOG_I("请放上 50g 砝码 → 3秒后读取...");
-//     rt_thread_mdelay(3000);
-//     int32_t raw_50g = hx711_value_ave(&hx711_dev, 30);  // 30次平均！
-//     LOG_I("50g 原始值 = %ld", (long)raw_50g);
+     // 3. 放 50g
+     LOG_I("请放上 50g 砝码 → 3秒后读取...");
+     rt_thread_mdelay(3000);
+     int32_t raw_50g = hx711_value_ave(&hx711_dev, 30);  // 30次平均！
+     LOG_I("50g 原始值 = %ld", (long)raw_50g);
 
-//     int32_t delta = raw_50g - hx711_dev.offset;
-//     if (delta < 1000) {
-//         LOG_E("增量太小！");
-//         return;
-//     }
+     int32_t delta = raw_50g - hx711_dev.offset;
+     if (delta < 1000) {
+         LOG_E("增量太小！");
+         return;
+     }
 
-//     float coef = (float)delta / 50.0f;
-//     hx711_dev.coef = coef;
+     float coef = (float)delta / 50.0f;
+     hx711_dev.coef = coef;
 
-//     LOG_I("高精度校准完成！");
-//     LOG_I("   delta = %ld", (long)delta);
-//     LOG_I("   coef  = %.6f", coef);
-//     LOG_I("   每克  = %.2f 计数", 1.0f/coef);
+     LOG_I("高精度校准完成！");
+     LOG_I("   delta = %ld", (long)delta);
+     LOG_I("   coef  = %.6f", coef);
+     LOG_I("   每克  = %.2f 计数", 1.0f/coef);
 
-//     // 4. 高精度验证（20次平均）
-//     LOG_I("高精度验证中...");
-//     for (int i = 0; i < 5; i++) {
-//         float w = hx711_weight(&hx711_dev, 20);  // 20次平均
-//         LOG_I("  [%d] 重量 = %.3f g", i+1, w);
-//         rt_thread_mdelay(1000);
-//     }
+     // 4. 高精度验证（20次平均）
+     LOG_I("高精度验证中...");
+     for (int i = 0; i < 5; i++) {
+         float w = hx711_weight(&hx711_dev, 20);  // 20次平均
+         LOG_I("  [%d] 重量 = %.3f g", i+1, w);
+         rt_thread_mdelay(1000);
+     }
 
-//     LOG_I("请取下砝码 → 验证归零...");
-//     rt_thread_mdelay(3000);
-//     float w0 = hx711_weight(&hx711_dev, 20);
-//     LOG_I("无负载 = %.3f g", w0);
+     LOG_I("请取下砝码 → 验证归零...");
+     rt_thread_mdelay(3000);
+     float w0 = hx711_weight(&hx711_dev, 20);
+     LOG_I("无负载 = %.3f g", w0);
 
-//     LOG_I("=== 校准成功！可写死 coef ===");
-// }
-// MSH_CMD_EXPORT(hx711_test_entry,hx711test);
+     LOG_I("=== 校准成功！可写死 coef ===");
+ }
+ MSH_CMD_EXPORT(hx711_test_entry,hx711test);
 
 
 
-static void hx711_test_entry(void *parameter)
-{
-    LOG_I("=== HX711 终极校准（50g 高精度）===");
-    hx711_init(&hx711_dev, GPIOF, GPIO_Pin_7, GPIOF, GPIO_Pin_6);
-    LOG_I("HX711 初始化完成");
+//static void hx711_test_entry(void *parameter)
+//{
+//    LOG_I("=== HX711 终极校准（50g 高精度）===");
+//    hx711_init(&hx711_dev, GPIOF, GPIO_Pin_7, GPIOF, GPIO_Pin_6);
+//    LOG_I("HX711 初始化完成");
 
-    LOG_I("预热 5 秒，稳定传感器...");
-    rt_thread_mdelay(5000);
+//    LOG_I("预热 5 秒，稳定传感器...");
+//    rt_thread_mdelay(5000);
 
-    LOG_I("请确保秤上无物 → 去皮...");
-    rt_thread_mdelay(2000);
-    hx711_tare(&hx711_dev, 30);
-    LOG_I("去皮完成，offset = %ld", (long)hx711_dev.offset);
+//    LOG_I("请确保秤上无物 → 去皮...");
+//    rt_thread_mdelay(2000);
+//    hx711_tare(&hx711_dev, 30);
+//    LOG_I("去皮完成，offset = %ld", (long)hx711_dev.offset);
 
-    LOG_I("请放上 50g 砝码 → 3秒后读取...");
-    rt_thread_mdelay(3000);
-    int32_t raw_50g = hx711_value_ave(&hx711_dev, 30);
-    LOG_I("50g 原始值 = %ld", (long)raw_50g);
+//    LOG_I("请放上 50g 砝码 → 3秒后读取...");
+//    rt_thread_mdelay(3000);
+//    int32_t raw_50g = hx711_value_ave(&hx711_dev, 30);
+//    LOG_I("50g 原始值 = %ld", (long)raw_50g);
 
-    int32_t delta = raw_50g - hx711_dev.offset;
-    if (delta < 1000) {
-        LOG_E("增量太小！校准失败");
-        return;  // 失败后退出线程
-    }
+//    int32_t delta = raw_50g - hx711_dev.offset;
+//    if (delta < 1000) {
+//        LOG_E("增量太小！校准失败");
+//        return;  // 失败后退出线程
+//    }
 
-    float coef = (float)delta / 50.0f;
-    hx711_dev.coef = coef;
+//    float coef = (float)delta / 50.0f;
+//    hx711_dev.coef = coef;
 
-    LOG_I("高精度校准完成！");
-    LOG_I(" delta = %ld", (long)delta);
-    LOG_I(" coef = %.6f", coef);
-    LOG_I(" 每克 = %.2f 计数", 1.0f / coef);
+//    LOG_I("高精度校准完成！");
+//    LOG_I(" delta = %ld", (long)delta);
+//    LOG_I(" coef = %.6f", coef);
+//    LOG_I(" 每克 = %.2f 计数", 1.0f / coef);
 
-    LOG_I("高精度验证中...");
-    for (int i = 0; i < 5; i++) {
-        float w = hx711_weight(&hx711_dev, 20);
-        LOG_I(" [%d] 重量 = %.3f g", i + 1, w);
-        rt_thread_mdelay(1000);
-    }
+//    LOG_I("高精度验证中...");
+//    for (int i = 0; i < 5; i++) {
+//        float w = hx711_weight(&hx711_dev, 20);
+//        LOG_I(" [%d] 重量 = %.3f g", i + 1, w);
+//        rt_thread_mdelay(1000);
+//    }
 
-    LOG_I("请取下砝码 → 验证归零...");
-    rt_thread_mdelay(3000);
-    float w0 = hx711_weight(&hx711_dev, 20);
-    LOG_I("无负载 = %.3f g", w0);
+//    LOG_I("请取下砝码 → 验证归零...");
+//    rt_thread_mdelay(3000);
+//    float w0 = hx711_weight(&hx711_dev, 20);
+//    LOG_I("无负载 = %.3f g", w0);
 
-    LOG_I("=== 校准成功！开始自主重量监测（每秒一次） ===");
+//    LOG_I("=== 校准成功！开始自主重量监测（每秒一次） ===");
 
-    /* 自主监测循环 */
-    while (1)
-    {
-        float weight = hx711_weight(&hx711_dev, 20);
-        rt_kprintf("[AUTO] 重量 = %.2f g\n\r", weight);
-        rt_thread_mdelay(1000);
-    }
-}
+//    /* 自主监测循环 */
+//    while (1)
+//    {
+//        float weight = hx711_weight(&hx711_dev, 20);
+//        rt_kprintf("[AUTO] 重量 = %.2f g\n\r", weight);
+//        rt_thread_mdelay(1000);
+//    }
+//}
 rt_thread_t hx711_tid = RT_NULL;
 /*======================================================================
  *  HX711 任务控制命令：start | stop

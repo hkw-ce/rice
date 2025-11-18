@@ -6,9 +6,9 @@
 
 // 1. 引脚定义
 #define WT588F_DATA_PIN    GPIO_Pin_7    // DATA 线（输出）
-#define WT588F_BUSY_PIN    GPIO_Pin_4    // BUSY 脚（输入）
+#define WT588F_BUSY_PIN    GPIO_Pin_6    // BUSY 脚（输入）
 #define WT588F_DATA_PORT   GPIOB         
-#define WT588F_BUSY_PORT   GPIOF         
+#define WT588F_BUSY_PORT   GPIOB         
 
 // 双字节指令宏定义（同前）
 #define WT588F_CMD_STOP_DUAL    0xFFFE
@@ -81,6 +81,9 @@ void WT588F_GPIO_Init(void)
     // 2. BUSY 脚（PA1）：浮空输入
     // --------------------------
     gpio_config(WT588F_BUSY_PORT, WT588F_BUSY_PIN, GPIO_Mode_IPU, GPIO_Speed_50MHz);
+	    rt_thread_mdelay(100);          // 等待 WT588F 上电初始化
+	//设置音量为中等（E8H，16 级中第 9 级）
+    WT588F_Set_Volume(0xEF);
 }
 
 /**

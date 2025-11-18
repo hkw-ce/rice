@@ -17,7 +17,7 @@
 #define ALPHA 0.15f // IIR滤波系数
 #define MAX_STEP_RATIO 0.20f // 最大可变化比（相对于上次值）
 uint8_t adc_channel[] = {
-    TD_MID_CHANNEL,
+//    TD_MID_CHANNEL,
     TD_MOS1_CHANNEL,
     TD_MOS2_CHANNEL,
     TD_OUT_CHANNEL,
@@ -37,6 +37,7 @@ typedef enum {
     NTC_CMFB_503F3950 = 0, // 50kΩ @25°C, B=3950K, 100k上拉
     NTC_SDNT_1608X103F3435, // 10kΩ @25°C, B=3435K, 10k上拉
     NTC_MF52D_104F3950,    // 100kΩ @25°C, B=3950K, 100k上拉 (新增)
+    NTC_MFB1003_3950_200C, // 100kΩ @25°C, B=3950K, 全温度表 (新增)
     NTC_TYPE_COUNT
 } ntc_type_t;
 // =========================================================
@@ -89,6 +90,26 @@ const rt_point_t mf52_table[] = {
     {60, 24.554},{65, 20.489},{70, 17.172},{75, 14.453},
     {80, 12.213},{85, 10.362},{90, 8.824},{95, 7.544},
     {100, 6.474},{105, 5.576},
+
+};
+// =========================================================
+// MFB1003-3950 100kΩ @25°C, B=3950K ±1% 官方表
+// 扩展版：-40℃ ~ 200℃ (每5℃一步进，共53点)
+// =========================================================
+const rt_point_t ntc_100k_3950_mfb_full_table[] = {
+    {-40, 3402.936f}, {-35, 2454.615f}, {-30, 1789.987f}, {-25, 1318.961f},
+    {-20,  981.5699f}, {-15, 737.4293f}, {-10, 559.0409f}, { -5, 427.4792f},
+    {  0,  329.5860f}, {  5, 255.7538f}, { 10, 200.0333f}, { 15, 157.6356f},
+    { 20,  125.1217f}, { 25, 100.0000f}, { 30,  80.4501f}, { 35,  65.1313f},
+    { 40,   53.0486f}, { 45,  43.4580f}, { 50,  35.8812f}, { 55,  29.7085f},
+    { 60,   24.7192f}, { 65,  20.6654f}, { 70,  17.3554f}, { 75,  14.6397f},
+    { 80,   12.4013f}, { 85,  10.5481f}, { 90,   9.0236f}, { 95,   7.7264f},
+    {100,   6.6385f}, {105,   5.7228f}, {110,   4.9495f}, {115,   4.2940f},
+    {120,   3.7367f}, {125,   3.2613f}, {130,   2.8546f}, {135,   2.5077f},
+    {140,   2.2040f}, {145,   1.9442f}, {150,   1.7210f}, {155,   1.5285f},
+    {160,   1.3620f}, {165,   1.2173f}, {170,   1.0912f}, {175,   0.9810f},
+    {180,   0.8844f}, {185,   0.7993f}, {190,   0.7243f}, {195,   0.6580f},
+    {200,   0.5991f}      // 200℃ 精确值 0.5991 kΩ
 };
 // =========================================================
 // NTC 配置表
@@ -111,7 +132,14 @@ const ntc_config_t ntc_configs[NTC_TYPE_COUNT] = {
         .table = mf52_table,
         .table_size = sizeof(mf52_table)/sizeof(mf52_table[0]),
         .name = "MF52D 104F3950 (100kΩ, 100k pull-up)"
+    },
+    [NTC_MFB1003_3950_200C] = {
+        .r_fixed = 100000.0f,
+        .table = ntc_100k_3950_mfb_full_table,
+        .table_size = sizeof(ntc_100k_3950_mfb_full_table)/sizeof(ntc_100k_3950_mfb_full_table[0]),
+        .name = "MFB1003-3950 100kΩ±1% B3950±1% (-40~200℃ 官方表)"
     }
+
 };
 // =========================================================
 // 电压 → 电阻 (Ω)
@@ -202,7 +230,7 @@ void adc_filter_update_all(float *voltages, float vcc)
 // =========================================================
 void ntc_read_rice_info(rice_information_t *info)
 {
-// if(adc_transtion_complete == FALSE) return;
+if(adc_transtion_complete == FALSE) return;
 // if(RESET != DMA_GetFlagStatus(DMA1_FLAG_TC5))
   {
    // 参考电压采样（用于校准）
@@ -212,10 +240,10 @@ void ntc_read_rice_info(rice_information_t *info)
     adc_filter_update_all(voltages, vcc);
     // === 电压 → 温度 ===
 //    info->T_bottom = (uint16_t)ntc_voltage_to_temperature(voltages[0], NTC_SDNT_1608X103F3435);
-    info->T_mos1 = (uint16_t)ntc_voltage_to_temperature(voltages[1], NTC_MF52D_104F3950);
-    info->T_mos2 = (uint16_t)ntc_voltage_to_temperature(voltages[2], NTC_MF52D_104F3950);
-    info->T_out = (uint16_t)ntc_voltage_to_temperature(voltages[3], NTC_SDNT_1608X103F3435);
-    info->T_bottom = (uint16_t)ntc_voltage_to_temperature(voltages[4], NTC_CMFB_503F3950);
+    info->T_mos1 = (uint16_t)ntc_voltage_to_temperature(voltages[0], NTC_MF52D_104F3950);
+    info->T_mos2 = (uint16_t)ntc_voltage_to_temperature(voltages[1], NTC_MF52D_104F3950);
+    info->T_out = (uint16_t)ntc_voltage_to_temperature(voltages[2], NTC_SDNT_1608X103F3435);
+    info->T_bottom = (uint16_t)ntc_voltage_to_temperature(voltages[3], NTC_MFB1003_3950_200C);
     // === 谐振电压采集 ===
     info->V_resonant = voltages[5]*1000.0f; // mV
 adc_transtion_complete = false;

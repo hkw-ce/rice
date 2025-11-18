@@ -31,8 +31,8 @@ uint16_t g_ina226_getavgcurrent = 0;
 //(手册：The power LSB has a fixed ratio to the Current_LSB of 25)
 //(power LSB与Current_LSB的固定比率为25)
 #define INA226_ADDRESS 0x40
-#define Calibration_H 0x0A
-#define Calibration_L 0x00
+#define Calibration_H 0x15
+#define Calibration_L 0xD6
 //实测发现电流偏大，采用手册校准公式 Corrected_Full_Scale_Cal = (Cal * MeasShuntCurrent) / INA226_CURRENT 
 //5V 测试条件下 MeasShuntCurrent = 31 mA 这是在5V测试条件下，通过其他方法实际测量到的分流电阻上的真实电流值  INA226_CURRENT = 32mA这是INA226传感器本身测量并输出的电流值 
 //// Corrected_Full_Scale_Cal = 31 * 1024 / 32= 992 = 0x03E0
@@ -111,7 +111,8 @@ uint32_t INA226_GetBusVoltage(void)
 {
 	uint32_t BusVoltage;
 	BusVoltage = (uint32_t)((INA226_ReadReg(INA226_BUSVOLTAGE)) * 1.25);
-	
+	uint32_t compenstion = BusVoltage %10;
+	BusVoltage = BusVoltage + compenstion*120  ;//动态补偿
 	return BusVoltage;
 }
 /**
@@ -126,7 +127,7 @@ uint32_t INA226_GetCurrent(void)
 {
 	uint32_t Current;
 
-	Current = (uint32_t)((INA226_ReadReg(INA226_CURRENT)) *1.831 );
+	Current = (uint32_t)((INA226_ReadReg(INA226_CURRENT)) *0.915527f);
 //Current = (uint32_t)((INA226_ReadReg(INA226_CURRENT)) * 0.05);
 	return Current;
 }
@@ -144,7 +145,7 @@ uint32_t INA226_GetPower(void)
 	
 	regValue = (uint32_t)INA226_ReadReg(INA226_POWER);
 
-	Power = (uint32_t)(regValue *50);// 等价于乘以1.25但避免浮点运算
+	Power = (uint32_t)(regValue *22.888);// 等价于乘以1.25但避免浮点运算
 
 	return Power;
 }

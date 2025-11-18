@@ -19,7 +19,7 @@ void thread_sample_task_entry(void *parameter)
 
 void thread_communication_task_entry(void *parameter)
 {
-    /
+    
     while (1)
     {
         rt_thread_mdelay(100);

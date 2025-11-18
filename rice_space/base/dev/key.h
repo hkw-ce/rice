@@ -25,26 +25,26 @@ typedef enum {
 extern sys_state_t state ;
 extern sys_state_t last_state;
 
-static uint8_t rice_type = 0;
-static uint8_t last_rice_type = 0xFF;
+extern uint8_t rice_type ;
+extern uint8_t last_rice_type;
 
-static uint8_t cook_mode = 0;
-static uint8_t last_cook_mode = 0xFF;
+extern uint8_t cook_mode ;
+extern uint8_t last_cook_mode ;
 
-static uint8_t book_hour = 0;
-static uint8_t last_book_hour = 0xFF;
+extern uint8_t book_hour ;
+extern uint8_t last_book_hour;
 
 // === 烹饪计时变量（非阻塞）===
-static rt_uint32_t cook_total_sec = 0;     // 总烹饪时间（秒）
-static rt_tick_t   cook_start_tick = 0;   // 开始烹饪的 tick
-static rt_bool_t   cook_active = RT_FALSE;
+extern rt_uint32_t cook_total_sec ;     // 总烹饪时间（秒）
+extern rt_tick_t   cook_start_tick ;   // 开始烹饪的 tick
+extern rt_bool_t   cook_active;
 
 // === 预约计时变量 ===
-static rt_tick_t   book_start_tick = 0;
-static rt_bool_t   book_active = RT_FALSE;
+extern rt_tick_t   book_start_tick ;
+extern rt_bool_t   book_active;
 
-static uint32_t cook_timer = 0;   // 秒
-static uint32_t book_timer = 0;   // 秒
+extern uint32_t cook_timer;   // 秒
+extern uint32_t book_timer;   // 秒
 
 // 米种名称
 extern const char *rice_name[] ;
